@@ -1,14 +1,16 @@
 package engineTester;
 
+import Entitys.Camera;
+import Entitys.Entity;
 import Textures.TextureModel;
 import models.ModelWithTexture;
 import models.RawModel;
 import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.Display;
+import org.lwjgl.util.vector.Vector3f;
 import renderEngine.DisplayManager;
 import renderEngine.Renderer;
 import renderEngine.VAOsLoader;
-import shaders.ShaderProgram;
 import shaders.TextureShader;
 
 import java.io.IOException;
@@ -23,8 +25,8 @@ public class MainGameLoop {
             e.printStackTrace();
         }
         VAOsLoader loader = new VAOsLoader();
-        Renderer renderer = new Renderer();
-        ShaderProgram shader = new TextureShader();
+        TextureShader shader = new TextureShader();
+        Renderer renderer = new Renderer(shader);
 
         float[] vertices = {
                 -0.5f,0.5f,0,   //V0
@@ -52,10 +54,16 @@ public class MainGameLoop {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        Entity entity = new Entity(modelWithTexture, new Vector3f(-1,0,0),0,0,0,1);
+
+        Camera camera = new Camera();
         while(!Display.isCloseRequested()){
+            entity.increasePosition(0.002f, 0, -0.01f);
+            camera.move();
             renderer.clean();
             shader.start();
-            renderer.render(modelWithTexture);
+            shader.loadViewMatrix(camera);
+            renderer.render(entity, shader);
             shader.stop();
             DisplayManager.updateDisplay();
         }
