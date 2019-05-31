@@ -16,5 +16,11 @@ public interface ShaderProgram {
 
     void bindAttribute(int attribute, String variableName);
 
+    int getUniformLocation(String uniformName);
+
+    void getAllUniformLocations();
+
+
+
 
 }

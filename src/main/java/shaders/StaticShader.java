@@ -13,4 +13,9 @@ public class StaticShader extends ShaderProgramImplementation{
     public void bindAttributes() {
         super.bindAttribute(0, "position");
     }
+
+    @Override
+    public void getAllUniformLocations() {
+
+    }
 }
