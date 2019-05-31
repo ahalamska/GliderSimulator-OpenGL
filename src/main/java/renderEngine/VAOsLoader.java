@@ -1,5 +1,6 @@
 package renderEngine;
 
+import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL15;
 import org.lwjgl.opengl.GL20;
@@ -48,7 +49,7 @@ public class VAOsLoader {
         vbos.add(vboID);
         GL15.glBindBuffer(GL15.GL_ARRAY_BUFFER, vboID);
         FloatBuffer.wrap(data);
-        GL15.glBufferData(GL15.GL_ARRAY_BUFFER, FloatBuffer.wrap(data), GL15.GL_STATIC_DRAW);
+        GL15.glBufferData(GL15.GL_ARRAY_BUFFER, storeDataInFloatBuffer(data), GL15.GL_STATIC_DRAW);
         GL20.glVertexAttribPointer(attributeNumber, 3, GL11.GL_FLOAT, false, 0, 0);
         GL15.glBindBuffer(GL15.GL_ARRAY_BUFFER, 0);
     }
@@ -58,6 +59,20 @@ public class VAOsLoader {
         int vboId = GL15.glGenBuffers();
         vbos.add(vboId);
         GL15.glBindBuffer(GL15.GL_ELEMENT_ARRAY_BUFFER, vboId);
-        GL15.glBufferData(GL15.GL_ELEMENT_ARRAY_BUFFER, IntBuffer.wrap(indices), GL15.GL_STATIC_DRAW);
+        GL15.glBufferData(GL15.GL_ELEMENT_ARRAY_BUFFER, storeDataInIntBuffer(indices), GL15.GL_STATIC_DRAW);
+    }
+
+    private IntBuffer storeDataInIntBuffer(int[] data){
+        IntBuffer buffer = BufferUtils.createIntBuffer(data.length);
+        buffer.put(data);
+        buffer.flip();
+        return buffer;
+    }
+
+    private FloatBuffer storeDataInFloatBuffer(float[] data){
+        FloatBuffer buffer = BufferUtils.createFloatBuffer(data.length);
+        buffer.put(data);
+        buffer.flip();
+        return buffer;
     }
 }

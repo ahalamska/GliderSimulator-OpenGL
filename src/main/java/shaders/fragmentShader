@@ -1,4 +1,4 @@
-#verison 400 core
+#version 150
 
 in vec3 colour;
 
