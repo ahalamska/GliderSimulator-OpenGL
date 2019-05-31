@@ -1,8 +1,10 @@
 package renderEngine;
 
+import models.RawModel;
+
 public class ModelLoader {
 
- public static Model loadObjModel(String fileName, VAOsLoader loader){
-return new Model(0,0);
+ public static RawModel loadObjModel(String fileName, VAOsLoader loader){
+return new RawModel(0,0);
  }
 }
