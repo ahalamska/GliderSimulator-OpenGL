@@ -29,20 +29,21 @@ public class MainGameLoop {
         TextureShader shader = new TextureShader();
         Renderer renderer = new Renderer(shader);
 
-        RawModel rawModel = OBJLoader.loadObjModel("Bird", loader);
+
         ModelWithTexture modelWithTexture = null;
         try {
-            TextureModel texture = new TextureModel(loader.loadTextureFromJPG("cup"));
+            RawModel rawModel = OBJLoader.loadObjModel("FSM", loader);
+            TextureModel texture = new TextureModel(loader.loadTextureFromPNG("FSMcol"));
             modelWithTexture = new ModelWithTexture(rawModel, texture);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Entity entity = new Entity(modelWithTexture, new Vector3f(-1,0,0),0,0,0,1);
+        Entity entity = new Entity(modelWithTexture, new Vector3f(0,0,-50),0,0,0,0.5f);
 
         Camera camera = new Camera();
         while(!Display.isCloseRequested()){
-            entity.increasePosition(0.002f, 0, -0.05f);
-            entity.increaseRotation(0.1f, 0.1f, 0.1f);
+
+            entity.increaseRotation(0.2f, 0.2f, 0.2f);
             camera.move();
             renderer.clean();
             shader.start();

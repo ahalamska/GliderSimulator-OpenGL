@@ -1,5 +1,9 @@
 package renderEngine;
 
+import de.javagl.obj.Obj;
+import de.javagl.obj.ObjData;
+import de.javagl.obj.ObjReader;
+import de.javagl.obj.ObjUtils;
 import models.RawModel;
 import org.lwjgl.util.vector.Vector2f;
 import org.lwjgl.util.vector.Vector3f;
@@ -10,7 +14,21 @@ import java.util.List;
 
 public class OBJLoader {
 
-    public static RawModel loadObjModel(String fileName, VAOsLoader loader) {
+    public static RawModel loadObjModel(String fileName, VAOsLoader loader) throws IOException {
+
+        InputStream inputStream =
+                new FileInputStream("objModels/"+ fileName +".obj");
+        Obj obj = ObjUtils.convertToRenderable(
+                ObjReader.read(inputStream));
+
+        int indices[] = ObjData.getFaceVertexIndicesArray(obj);
+        float vertices[] = ObjData.getVerticesArray(obj);
+        float texCoords[] = ObjData.getTexCoordsArray(obj, 2);
+        //FloatBuffer normals = ObjData.getNormals(obj);
+        return loader.loadToVAO(vertices, indices, texCoords);
+    }
+
+    public static RawModel loadObjModel2(String fileName, VAOsLoader loader) {
         FileReader fr = null;
         try {
             fr = new FileReader(new File("objModels/" + fileName + ".obj"));
@@ -18,6 +36,7 @@ public class OBJLoader {
             System.err.println("Couldn't load file!");
             e.printStackTrace();
         }
+        assert fr != null;
         BufferedReader reader = new BufferedReader(fr);
         String line;
         List<Vector3f> vertices = new ArrayList<>();
