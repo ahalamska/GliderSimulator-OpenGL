@@ -11,6 +11,9 @@ public class TextureShader extends ShaderProgramImplementation {
     private int locationTransformationMatrix;
     private int locationProjectionMatrix;
     private int locationViewMatrix;
+    private int locationColourMatrix;
+    //private int locationColourMatrix;
+
 
     public TextureShader() {
         super(VERTEX_FILE, FRAGMENT_FILE);
