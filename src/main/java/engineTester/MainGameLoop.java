@@ -39,8 +39,8 @@ public class MainGameLoop {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Entity entity = new Entity(modelWithTexture, new Vector3f(0,0,-50),0,0,0,0.5f);
-        Light sun = new Light(new Vector3f(0,0,-20), new Vector3f(1,1,1));
+        Entity entity = new Entity(modelWithTexture, new Vector3f(0,0,-250),0,0,0,1);
+        Light sun = new Light(new Vector3f(0,20,-20), new Vector3f(1,1,1));
         Camera camera = new Camera();
         while(!Display.isCloseRequested()){
 
