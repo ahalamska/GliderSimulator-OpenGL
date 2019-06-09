@@ -29,6 +29,9 @@ public class MainGameLoop {
         VAOsLoader loader = new VAOsLoader();
 
         MultipleRenderer renderer = new MultipleRenderer();
+        RawModel birdModel = OBJLoader.loadObjModel("Eagle", loader);
+        TextureModel birdTexture = new TextureModel(10, 0.2f, loader.loadTextureFromPNG("Eagle"));
+        ModelWithTexture birdModelWithTexture = new ModelWithTexture(birdModel, birdTexture);
 
         List<Entity> birds = new ArrayList<>();
         Random random = new Random();
@@ -67,7 +70,6 @@ public class MainGameLoop {
             System.out.println(plane.getRotY());
             renderer.processEntity(plane);
             for (Entity bird : birds) {
-                bird = moveBird(bird);
                 renderer.processEntity(bird);
             }
             for (Terrain t : terrains){
@@ -81,8 +83,8 @@ public class MainGameLoop {
         DisplayManager.closeDisplay();
     }
 
-    public static Entity moveBird(Entity bird){
+    /*public static Entity moveBird(Entity bird){
         bird.increasePosition(1,1,1);
         bird.increaseRotation();
-    }
+    }*/
 }
