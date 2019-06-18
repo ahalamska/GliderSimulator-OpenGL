@@ -7,10 +7,8 @@ import Engine.toolbox.Maths;
 
 public class StaticShader extends ShaderProgramImplementation {
 
-    private static final String VERTEX_FILE = "D:\\Kod\\OpenGL\\GliderSimulator\\src\\main\\java\\Engine\\shaders" +
-            "\\vertexShader.glsl";
-    private static final String FRAGMENT_FILE = "D:\\Kod\\OpenGL\\GliderSimulator\\src\\main\\java\\Engine\\shaders" +
-            "\\fragmentShader.glsl";
+    private static final String VERTEX_FILE = "./src/main/java/Engine/shaders/vertexShader.glsl";
+    private static final String FRAGMENT_FILE = "./src/main/java/Engine/shaders/fragmentShader.glsl";
     private int locationTransformationMatrix;
     private int locationProjectionMatrix;
     private int locationViewMatrix;
@@ -29,7 +27,7 @@ public class StaticShader extends ShaderProgramImplementation {
 
         super.bindAttribute(0, "position");
         super.bindAttribute(1, "textureCoords");
-        super.bindAttribute(2,"normal" );
+        super.bindAttribute(2, "normal");
     }
 
     @Override
@@ -55,12 +53,14 @@ public class StaticShader extends ShaderProgramImplementation {
         Matrix4f viewMatrix = Maths.createViewMatrix(camera);
         super.loadMatrix(locationViewMatrix, viewMatrix);
     }
+
     public void loadLight(Light light) {
         super.loadVector(locationLightPosition, light.getPosition());
         super.loadVector(locationLightColour, light.getColour());
     }
-    public void loadShineVariables(float damper,  float reflection){
-        super.loadFloat(locationReflection,reflection);
+
+    public void loadShineVariables(float damper, float reflection) {
+        super.loadFloat(locationReflection, reflection);
         super.loadFloat(locationShineDamper, damper);
     }
 }

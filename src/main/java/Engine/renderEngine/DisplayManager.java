@@ -27,7 +27,7 @@ public class DisplayManager {
         lastFrameTime = getCurrentTime();
     }
     public static void updateDisplay(){
-        Display.sync(FPS_CAP);
+        Display.sync(FPS_CAP);//kurwa
         Display.update();
         long currentFrameTime = getCurrentTime();
         delta = (currentFrameTime - lastFrameTime) / 1000f;
