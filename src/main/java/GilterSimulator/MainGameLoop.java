@@ -1,7 +1,6 @@
 package GilterSimulator;
 
 import Engine.Entitys.Camera;
-import Engine.Entitys.Entity;
 import Engine.Entitys.Light;
 import Engine.Entitys.Plane;
 import Engine.Textures.TextureModel;
@@ -12,6 +11,7 @@ import Engine.renderEngine.MultipleRenderer;
 import Engine.renderEngine.OBJLoader;
 import Engine.renderEngine.VAOsLoader;
 import Engine.terrains.Terrain;
+import GilterSimulator.Birds.BirdManager;
 import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.util.vector.Vector3f;
@@ -19,7 +19,6 @@ import org.lwjgl.util.vector.Vector3f;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class MainGameLoop {
 
@@ -27,21 +26,13 @@ public class MainGameLoop {
 
         DisplayManager.createDisplay();
         VAOsLoader loader = new VAOsLoader();
-
         MultipleRenderer renderer = new MultipleRenderer();
-        RawModel birdModel = OBJLoader.loadObjModel("Eagle", loader);
-        TextureModel birdTexture = new TextureModel(10, 0.2f, loader.loadTextureFromPNG("Eagle"));
-        ModelWithTexture birdModelWithTexture = new ModelWithTexture(birdModel, birdTexture);
 
-        List<Entity> birds = new ArrayList<>();
-        Random random = new Random();
-        for (int i = 0; i < 500; i++) {
-            float x = random.nextFloat() * 1000 - 50;
-            float y = random.nextFloat() * 1000 - 50;
-            float z = random.nextFloat() * 1000 - 50;
-            birds.add(new Entity(birdModelWithTexture, new Vector3f(x,y,z), random.nextFloat() * 90f,
-                    random.nextFloat() * 90f, 0, 0.1f));
-        }
+
+        BirdManager birdManager = new BirdManager();
+        birdManager.createEagles(loader, 500);
+
+
 
         RawModel planeModel = OBJLoader.loadObjModel("plane", loader);
         TextureModel planeTexture = new TextureModel(10, 2, loader.loadTextureFromJPG("plane_textures"));
@@ -64,14 +55,13 @@ public class MainGameLoop {
         Camera camera = new Camera(plane);
 
 
+
         while (!Display.isCloseRequested()) {
+            birdManager.countPosition();
             camera.move();
             plane.move();
-            System.out.println(plane.getRotY());
             renderer.processEntity(plane);
-            for (Entity bird : birds) {
-                renderer.processEntity(bird);
-            }
+            birdManager.processBirds(renderer);
             for (Terrain t : terrains){
                 renderer.processTerrain(t);
             }
@@ -82,9 +72,4 @@ public class MainGameLoop {
         loader.cleanUp();
         DisplayManager.closeDisplay();
     }
-
-    /*public static Entity moveBird(Entity bird){
-        bird.increasePosition(1,1,1);
-        bird.increaseRotation();
-    }*/
 }

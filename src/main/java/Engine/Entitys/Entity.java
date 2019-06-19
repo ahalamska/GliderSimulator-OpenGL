@@ -2,11 +2,13 @@ package Engine.Entitys;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import Engine.models.ModelWithTexture;
 import org.lwjgl.util.vector.Vector3f;
 
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 public class Entity {
