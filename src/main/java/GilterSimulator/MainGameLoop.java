@@ -31,22 +31,15 @@ public class MainGameLoop {
         VAOsLoader loader = new VAOsLoader();
         MultipleRenderer renderer = new MultipleRenderer();
 
-<<<<<<< HEAD
-
-        BirdManager birdManager = new BirdManager();
-        birdManager.createEagles(loader, 500);
-
-
-=======
         System.out.println(Sys.getTime()+"renderen accesible");
+
         BirdManager birdManager = new BirdManager();
-        birdManager.createEagles(loader, 1);
->>>>>>> b71ad6fb77337c3c87854a564a722cd72f7e5e44
+        birdManager.createEagles(loader, 100);
 
         System.out.println(Sys.getTime()+"Birds created");
 
-        RawModel planeModel = OBJLoader.loadObjModel("Low_poly_UFO", loader);
-        TextureModel planeTexture = new TextureModel(10, 2, loader.loadTextureFromPNG("ufo_diffuse"));
+        RawModel planeModel = OBJLoader.loadObjModel("plane", loader);
+        TextureModel planeTexture = new TextureModel(10, 2, loader.loadTextureFromJPG("plane_textures"));
         ModelWithTexture planeModelWithTexture = new ModelWithTexture(planeModel, planeTexture);
 
         System.out.println(Sys.getTime()+"Plane created");
@@ -63,9 +56,9 @@ public class MainGameLoop {
 
         System.out.println(Sys.getTime()+"Terrain crested");
 
-        Random random = new Random();
-        Plane plane = new Plane(planeModelWithTexture, new Vector3f(random.nextInt(800), Plane.STARTING_ALTITUDE, random.nextInt(800)),
-                0 , random.nextInt(360), 0, 0.3f);
+
+        Plane plane = new Plane(planeModelWithTexture, new Vector3f(0, Plane.STARTING_ALTITUDE, 0),
+                0 , 0, 0, 0.3f);
         Camera camera = new Camera(plane);
 
         System.out.println(Sys.getTime()+"Camera created");
@@ -75,11 +68,9 @@ public class MainGameLoop {
             birdManager.countPosition();
             camera.move();
             plane.move();
-<<<<<<< HEAD
-=======
             System.out.println(plane.getPosition().y);
-            //birdManager.countPosition();
->>>>>>> b71ad6fb77337c3c87854a564a722cd72f7e5e44
+            birdManager.countPosition();
+
             renderer.processEntity(plane);
             birdManager.processBirds(renderer);
             for (Terrain t : terrains){

@@ -31,6 +31,10 @@ public class Entity {
         this.rotZ+= dz;
     }
 
+    public void resetHigh(){
+        this.position.y = 0f;
+    }
+
     public  void increaseScale(float s){
         this.scale += s;
     }
