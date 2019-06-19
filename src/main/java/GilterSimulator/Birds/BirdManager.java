@@ -21,9 +21,12 @@ public class BirdManager {
 
     private List<Bird> birds = new ArrayList<>();
 
-    public void createEagles(VAOsLoader loader, int count) throws IOException {
+    public void createEagles(int count) throws IOException {
+        RawModel birdModel = OBJLoader.loadObjModel("Eagle", VAOsLoader.getInstance());
+        TextureModel birdTexture = new TextureModel(10, 0.2f, VAOsLoader.getInstance().loadTextureFromPNG("Eagle"));
+        ModelWithTexture birdModelWithTexture = new ModelWithTexture(birdModel, birdTexture);
         for (int i = 0; i < count ; i++) {
-            createEagle(loader);
+            createBird(birdModelWithTexture);
         }
     }
 
@@ -38,12 +41,6 @@ public class BirdManager {
         birds.add(newBird);
     }
 
-    private void createEagle(VAOsLoader loader) throws IOException {
-        RawModel birdModel = OBJLoader.loadObjModel("Eagle", loader);
-        TextureModel birdTexture = new TextureModel(10, 0.2f, loader.loadTextureFromPNG("Eagle"));
-        ModelWithTexture birdModelWithTexture = new ModelWithTexture(birdModel, birdTexture);
-        createBird(birdModelWithTexture);
-    }
 
     public void countPosition(){
         for( Bird bird: birds){

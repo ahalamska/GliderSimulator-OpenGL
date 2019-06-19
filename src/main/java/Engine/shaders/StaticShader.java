@@ -4,6 +4,7 @@ import Engine.Entitys.Camera;
 import Engine.Entitys.Light;
 import org.lwjgl.util.vector.Matrix4f;
 import Engine.toolbox.Maths;
+import org.lwjgl.util.vector.Vector3f;
 
 public class StaticShader extends ShaderProgramImplementation {
 
@@ -16,6 +17,7 @@ public class StaticShader extends ShaderProgramImplementation {
     private int locationLightPosition;
     private int locationReflection;
     private int locationShineDamper;
+    private int locationSkyColour;
 
 
     public StaticShader() {
@@ -39,6 +41,7 @@ public class StaticShader extends ShaderProgramImplementation {
         locationLightColour = super.getUniformLocation("lightColour");
         locationReflection = super.getUniformLocation("reflection");
         locationShineDamper = super.getUniformLocation("shineDamper");
+        locationSkyColour = super.getUniformLocation("skyColour");
     }
 
     public void loadTranformationMatrix(Matrix4f matrix) {
@@ -62,6 +65,10 @@ public class StaticShader extends ShaderProgramImplementation {
     public void loadShineVariables(float damper, float reflection) {
         super.loadFloat(locationReflection, reflection);
         super.loadFloat(locationShineDamper, damper);
+    }
+
+    public void loadSkyColour(float r, float g, float b){
+        super.loadVector(locationSkyColour, new Vector3f(r,g,b));
     }
 }
 

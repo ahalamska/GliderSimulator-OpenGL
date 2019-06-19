@@ -4,14 +4,10 @@ import Engine.Entitys.Camera;
 import Engine.Entitys.Light;
 import Engine.Entitys.Plane;
 import Engine.Textures.TextureModel;
-import Engine.models.ModelWithTexture;
-import Engine.models.RawModel;
 import Engine.renderEngine.DisplayManager;
 import Engine.renderEngine.MultipleRenderer;
-import Engine.renderEngine.OBJLoader;
 import Engine.renderEngine.VAOsLoader;
 import Engine.terrains.Terrain;
-import GilterSimulator.Birds.BirdManager;
 import org.lwjgl.LWJGLException;
 import org.lwjgl.Sys;
 import org.lwjgl.opengl.Display;
@@ -33,21 +29,16 @@ public class MainGameLoop {
 
         System.out.println(Sys.getTime()+"renderen accesible");
 
-        BirdManager birdManager = new BirdManager();
-        birdManager.createEagles(loader, 100);
+        ObjectsManager objectsManager = new ObjectsManager();
+        objectsManager.createObjects();
 
-        System.out.println(Sys.getTime()+"Birds created");
-
-        RawModel planeModel = OBJLoader.loadObjModel("plane", loader);
-        TextureModel planeTexture = new TextureModel(10, 2, loader.loadTextureFromJPG("plane_textures"));
-        ModelWithTexture planeModelWithTexture = new ModelWithTexture(planeModel, planeTexture);
 
         System.out.println(Sys.getTime()+"Plane created");
 
         Light sun = new Light(new Vector3f(3000, 2000, 2000), new Vector3f(1, 1, 1));
 
-        Terrain terrain = new Terrain(0,0,loader,new TextureModel(10,0.1f, loader.loadTextureFromJPG("Sand1")));
-        Terrain terrain2 = new Terrain(1,0,loader,new TextureModel(10,0.1f, loader.loadTextureFromJPG("Sand2")));
+        Terrain terrain = new Terrain(0,0,loader,new TextureModel(10,0.1f, loader.loadTextureFromJPG("sand1")));
+        Terrain terrain2 = new Terrain(1,0,loader,new TextureModel(10,0.01f, loader.loadTextureFromJPG("sand1")));
 
         List<Terrain> terrains = new ArrayList<>();
         terrains.add(terrain);
@@ -57,22 +48,17 @@ public class MainGameLoop {
         System.out.println(Sys.getTime()+"Terrain crested");
 
 
-        Plane plane = new Plane(planeModelWithTexture, new Vector3f(0, Plane.STARTING_ALTITUDE, 0),
-                0 , 0, 0, 0.3f);
+        Plane plane = new Plane();
         Camera camera = new Camera(plane);
 
         System.out.println(Sys.getTime()+"Camera created");
 
 
         while (!Display.isCloseRequested()) {
-            birdManager.countPosition();
             camera.move();
             plane.move();
-            System.out.println(plane.getPosition().y);
-            birdManager.countPosition();
-
+            objectsManager.processObjects(renderer);
             renderer.processEntity(plane);
-            birdManager.processBirds(renderer);
             for (Terrain t : terrains){
                 renderer.processTerrain(t);
             }

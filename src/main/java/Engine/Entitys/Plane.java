@@ -1,17 +1,22 @@
 package Engine.Entitys;
 
+import Engine.Textures.TextureModel;
 import Engine.models.ModelWithTexture;
 import Engine.renderEngine.DisplayManager;
+import Engine.renderEngine.OBJLoader;
+import Engine.renderEngine.VAOsLoader;
 import lombok.Getter;
 import lombok.Setter;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.util.vector.Vector3f;
 
+import java.io.IOException;
+
 @Getter
 @Setter
 public class Plane extends Entity {
 
-    public static final int STARTING_ALTITUDE = 20;
+    public static final int STARTING_ALTITUDE = 70;
     //used
     private static final float MAX_ROLL = 20f;
     private static final float ROLL_SPEED = 0.3f;
@@ -31,8 +36,12 @@ public class Plane extends Entity {
     private float current_turn_speed = 0;
     private float current_vertical_wind_speed = 0;
 
-    public Plane(ModelWithTexture model, Vector3f position, float rotX, float rotY, float rotZ, float scale) {
-        super(model, position, rotX, rotY, rotZ, scale);
+    public Plane() throws IOException {
+
+        super(new ModelWithTexture(OBJLoader.loadObjModel("plane",
+                VAOsLoader.getInstance()), new TextureModel(10, 2, VAOsLoader
+                .getInstance()
+                .loadTextureFromJPG("plane_textures"))), new Vector3f(0, Plane.STARTING_ALTITUDE, 0), 0, 0, 0, 0.3f);
     }
 
     public void move() {
@@ -46,7 +55,7 @@ public class Plane extends Entity {
         float dy =
                 (float) (GRAVITY_DROP_PER_SECOND + current_vertical_wind_speed + Math.sin(super.getRotX()) * PITCH_COEFF) * DisplayManager
                 .getFrameTimeSec();
-        if(getPosition().y + dy <= 0) dy=0;
+        if (getPosition().y + dy <= 0) dy = 0;
         super.increasePosition(dx, dy, dz);
         isCollisionWithTheGround();
     }
