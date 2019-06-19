@@ -26,7 +26,7 @@ public class Plane extends Entity {
     private static final float PITCH_COEFF = 0.55f;
 
     public static final int STARTING_ALTITUDE = 20;
-    //altitude of the lowest vertex of the model: lowest_x_coordinate*scale
+    //altitude of the lowest vertex of the modelwith initializing plane y on 0: lowest_y_coordinate*scale
 
     //not used
     private static final float WIND_SUPPRESS = 0.9f;
@@ -46,6 +46,7 @@ public class Plane extends Entity {
         float dy = (float) (GRAVITY_DROP_PER_SECOND+current_vertical_wind_speed+Math.sin(super.getRotX())*PITCH_COEFF)
                 *DisplayManager.getFrameTimeSec();
         super.increasePosition(dx, dy, dz);
+        detectGroundCollision();
     }
 
     public void checkInputs(){
@@ -75,5 +76,10 @@ public class Plane extends Entity {
                 super.setRotZ(Math.min(super.getRotZ()+ROLL_SPEED, 0));
         }
         current_turn_speed = -MAX_TURN_SPEED*super.getRotZ()/MAX_ROLL;
+    }
+
+    private void detectGroundCollision() {
+        if (super.getPosition().y < 0)              //not exactly, check line 29
+            System.out.println("Collision with groud!");
     }
 }
