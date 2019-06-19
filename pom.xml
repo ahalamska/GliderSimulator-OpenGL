@@ -8,7 +8,7 @@
     <version>1.0-SNAPSHOT</version>
     <properties>
         <natives.version>0.0.6</natives.version>
-        <lwjgl.version>2.8.2</lwjgl.version>
+        <lwjgl.version>2.9.2</lwjgl.version>
         <slick.version>274</slick.version>
     </properties>
     <build>
@@ -38,6 +38,61 @@
             <groupId>de.javagl</groupId>
             <artifactId>obj</artifactId>
             <version>0.3.0</version>
+        </dependency>
+        <dependency>
+            <groupId>net.java.jinput</groupId>
+            <artifactId>jinput</artifactId>
+            <version>2.0.5</version>
+        </dependency>
+        <dependency>
+            <groupId>net.java.jutils</groupId>
+            <artifactId>jutils</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.jfoenix</groupId>
+            <artifactId>jfoenix</artifactId>
+            <version>9.0.8</version>
+        </dependency>
+        <dependency>
+            <groupId>de.javagl</groupId>
+            <artifactId>obj</artifactId>
+            <version>0.3.0</version>
+        </dependency>
+        <dependency>
+            <groupId>net.java.jinput</groupId>
+            <artifactId>jinput-platform</artifactId>
+            <version>2.0.5</version>
+        </dependency>
+        <dependency>
+            <groupId>OpenGL</groupId>
+            <artifactId>GliderSimulator</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.lwjgl.lwjgl</groupId>
+            <artifactId>lwjgl</artifactId>
+            <version>2.8.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.lwjgl.lwjgl</groupId>
+            <artifactId>lwjgl-platform</artifactId>
+            <version>2.8.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.sonatype.oss</groupId>
+            <artifactId>oss-parent</artifactId>
+            <version>9</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.6</version>
+        </dependency>
+        <dependency>
+            <groupId>org.lwjgl.lwjgl</groupId>
+            <artifactId>parent</artifactId>
+            <version>2.8.2</version>
         </dependency>
     </dependencies>
 

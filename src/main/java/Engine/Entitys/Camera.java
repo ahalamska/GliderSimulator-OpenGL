@@ -56,6 +56,8 @@ public class Camera {
             float pitchChange = Mouse.getDY() * 0.1f;
             pitch -= pitchChange;
         }
+        else
+            pitch = 20;
     }
 
     private void calculateangleAroundPlayer(){
@@ -63,5 +65,7 @@ public class Camera {
             float angleChange = Mouse.getDX() * 0.3f;
             angleAroundPlayer -= angleChange;
         }
+        else
+            angleAroundPlayer = 0;
     }
 }

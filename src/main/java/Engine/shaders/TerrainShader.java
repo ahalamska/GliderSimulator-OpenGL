@@ -6,10 +6,8 @@ import Engine.toolbox.Maths;
 import org.lwjgl.util.vector.Matrix4f;
 
 public class TerrainShader extends ShaderProgramImplementation {
-    private static final String VERTEX_FILE = "D:\\Kod\\OpenGL\\GliderSimulator\\src\\main\\java\\Engine\\shaders" +
-            "\\terrainVertexShader.glsl";
-    private static final String FRAGMENT_FILE = "D:\\Kod\\OpenGL\\GliderSimulator\\src\\main\\java\\Engine\\shaders" +
-            "\\terrainFragmentShader.glsl";
+    private static final String VERTEX_FILE = "./src/main/java/Engine/shaders/terrainVertexShader.glsl";
+    private static final String FRAGMENT_FILE = "./src/main/java/Engine/shaders/terrainFragmentShader.glsl";
     private int location_transformationMatrix;
     private int location_projectionMatrix;
     private int location_viewMatrix;

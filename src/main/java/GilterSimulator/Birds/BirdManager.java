@@ -29,12 +29,21 @@ public class BirdManager {
 
     private void createBird(ModelWithTexture birdModelWithTexture){
         Random random = new SecureRandom();
+<<<<<<< HEAD
         float x = random.nextFloat() * 1000 - 500;
         float y = random.nextFloat() * 1000 - 500;
         float z = random.nextFloat() * 1000 - 500;
         Vector3f position = new Vector3f(x,y,z);
          Bird newBird = new Bird(birdModelWithTexture, position, random.nextFloat() * 180f, random.nextFloat() * 180f,
                 random.nextFloat() * 180f, 0.2f);
+=======
+        float x = random.nextFloat() * 1000 - 50;
+        float y = random.nextFloat() * 1000 - 50;
+        float z = random.nextFloat() * 1000 - 50;
+        Vector3f position = new Vector3f(x,y,z);
+         Bird newBird = new Bird(birdModelWithTexture, position, random.nextFloat() * 90f, random.nextFloat() * 90f,
+                random.nextFloat() * 90f, 0.3f);
+>>>>>>> b71ad6fb77337c3c87854a564a722cd72f7e5e44
         birds.add(newBird);
     }
 
