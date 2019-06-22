@@ -35,18 +35,15 @@ public class MainGameLoop {
 
         System.out.println(Sys.getTime()+"Plane created");
 
-        Light sun = new Light(new Vector3f(3000, 2000, 2000), new Vector3f(1, 1, 1));
+        Light sun = new Light(new Vector3f(1000, 2000, 1000), new Vector3f(1, 1, 1));
 
-        Terrain terrain = new Terrain(0,0,loader,new TextureModel(10,0.1f, loader.loadTextureFromJPG("sand1")));
-        Terrain terrain2 = new Terrain(1,0,loader,new TextureModel(10,0.01f, loader.loadTextureFromJPG("sand1")));
-
+        TextureModel terrainModel = new TextureModel(10, 0.05f, loader.loadTextureFromJPG("sand1"));
         List<Terrain> terrains = new ArrayList<>();
-        terrains.add(terrain);
-        terrains.add(terrain2);
-
+        for(int i=-5; i <=5; i++)
+            for(int j=-5; j<=5; j++)
+                terrains.add(new Terrain(i, j, loader, terrainModel));
 
         System.out.println(Sys.getTime()+"Terrain crested");
-
 
         Plane plane = new Plane();
         Camera camera = new Camera(plane);

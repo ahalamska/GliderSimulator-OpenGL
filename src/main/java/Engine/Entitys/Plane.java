@@ -19,9 +19,9 @@ public class Plane extends Entity {
     public static final int STARTING_ALTITUDE = 70;
     //used
     private static final float MAX_ROLL = 20f;
-    private static final float ROLL_SPEED = 0.3f;
+    private static final float ROLL_SPEED = 0.5f;
     private static final float MAX_TURN_SPEED = 20f;
-    private static final float GRAVITY_DROP_PER_SECOND = -0.6f;
+    private static final float GRAVITY_DROP_PER_SECOND = 0.0f;
     private static final float MAX_PITCH = 10f;
     private static final float PITCH_SPEED = 0.2f;
     private static final float PITCH_COEFF = 0.55f;
@@ -29,10 +29,10 @@ public class Plane extends Entity {
     private static final float WIND_SUPPRESS = 0.9f;
     private static final float NORMAL_SUPPRESS = 2f;
     private static final float FAST_SUPPRESS = 4f;
-    private static final float MAX_SPEED = 40;
-    //altitude of the lowest vertex of the modelwith initializing plane y on 0: lowest_y_coordinate*scale
+    private static final float MAX_SPEED = 40f;
+    //altitude of the lowest vertex of the model with initializing plane y on 0: lowest_y_coordinate*scale
     //TODO real-physic plane movement
-    private float current_speed = 0;
+    private float current_speed = 10f;
     private float current_turn_speed = 0;
     private float current_vertical_wind_speed = 0;
 

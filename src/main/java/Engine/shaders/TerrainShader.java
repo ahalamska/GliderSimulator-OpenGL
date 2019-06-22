@@ -4,6 +4,7 @@ import Engine.Entitys.Camera;
 import Engine.Entitys.Light;
 import Engine.toolbox.Maths;
 import org.lwjgl.util.vector.Matrix4f;
+import org.lwjgl.util.vector.Vector3f;
 
 public class TerrainShader extends ShaderProgramImplementation {
     private static final String VERTEX_FILE = "./src/main/java/Engine/shaders/terrainVertexShader.glsl";
@@ -15,6 +16,7 @@ public class TerrainShader extends ShaderProgramImplementation {
     private int location_lightColour;
     private int location_shineDamper;
     private int location_reflectivity;
+    private int location_skyColour;
 
 
     public TerrainShader() {
@@ -36,8 +38,8 @@ public class TerrainShader extends ShaderProgramImplementation {
         location_lightPosition = super.getUniformLocation("lightPosition");
         location_lightColour = super.getUniformLocation("lightColour");
         location_shineDamper = super.getUniformLocation("shineDamper");
-        location_reflectivity = super.getUniformLocation("reflectivity");
-
+        location_reflectivity = super.getUniformLocation("reflection");
+        location_skyColour = super.getUniformLocation("skyColour");
     }
 
     public void loadShineVariables(float damper,float reflectivity){
@@ -62,4 +64,9 @@ public class TerrainShader extends ShaderProgramImplementation {
     public void loadProjectionMatrix(Matrix4f projection){
         super.loadMatrix(location_projectionMatrix, projection);
     }
+
+    public void loadSkyColour(float r, float g, float b){
+        super.loadVector(location_skyColour, new Vector3f(r,g,b));
+    }
+
 }
