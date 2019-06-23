@@ -2,17 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4023bef8-f0c3-4312-9526-73c822fe3ff1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/GilterSimulator/TerrainManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/Entitys/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/Entitys/Camera.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/Entitys/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/Entitys/Entity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/Entitys/Plane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/Entitys/Plane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/shaders/TerrainShader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/shaders/TerrainShader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/terrains/Terrain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/terrains/Terrain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/toolbox/Maths.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/toolbox/Maths.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GilterSimulator/Birds/Bird.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GilterSimulator/Birds/Bird.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GilterSimulator/Birds/BirdManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GilterSimulator/Birds/BirdManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GilterSimulator/MainGameLoop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GilterSimulator/MainGameLoop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GilterSimulator/ObjectsManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GilterSimulator/ObjectsManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Engine/Entitys/Camera.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Engine/Entitys/Entity.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Engine/Entitys/Light.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Engine/Entitys/Plane.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Engine/Textures/TextureModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Engine/models/ModelWithTexture.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Engine/models/RawModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Engine/renderEngine/DisplayManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Engine/renderEngine/EntityRenderer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Engine/renderEngine/ModelLoader.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Engine/renderEngine/MultipleRenderer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Engine/renderEngine/OBJLoader.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Engine/renderEngine/TerrainRenderer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Engine/renderEngine/VAOsLoader.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Engine/shaders/ShaderProgram.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Engine/shaders/ShaderProgramImplementation.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Engine/shaders/StaticShader.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Engine/shaders/TerrainShader.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Engine/terrains/Terrain.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Engine/toolbox/Maths.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/GilterSimulator/Birds/Bird.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/GilterSimulator/Birds/BirdManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/GilterSimulator/MainGameLoop.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/GilterSimulator/ObjectsManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/GilterSimulator/TerrainManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -38,7 +54,7 @@
               <entry file="file://$PROJECT_DIR$/src/main/java/Engine/Entitys/Plane.java">
                 <provider selected="true" editor-type-id="text-editor">
                   <state relative-caret-position="338">
-                    <caret line="23" column="49" lean-forward="true" selection-start-line="23" selection-start-column="49" selection-end-line="23" selection-end-column="49" />
+                    <caret line="23" column="49" selection-start-line="23" selection-start-column="49" selection-end-line="23" selection-end-column="49" />
                     <folding>
                       <element signature="imports" expanded="true" />
                     </folding>
@@ -125,7 +141,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/Engine/toolbox/Maths.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="367">
-              <caret line="31" column="79" lean-forward="true" selection-start-line="31" selection-start-column="79" selection-end-line="31" selection-end-column="79" />
+              <caret line="31" column="79" selection-start-line="31" selection-start-column="79" selection-end-line="31" selection-end-column="79" />
             </state>
           </provider>
         </entry>
@@ -134,7 +150,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/GilterSimulator/ObjectsManager.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="184">
-              <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
+              <caret line="30" selection-start-line="30" selection-end-line="30" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -158,7 +174,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/GilterSimulator/TerrainManager.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="238">
-              <caret line="23" column="59" lean-forward="true" selection-start-line="23" selection-start-column="59" selection-end-line="23" selection-end-column="59" />
+              <caret line="23" column="59" selection-start-line="23" selection-start-column="59" selection-end-line="23" selection-end-column="59" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#451#452#0" expanded="true" />
@@ -172,7 +188,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/GilterSimulator/Birds/Bird.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="350">
-              <caret line="43" lean-forward="true" selection-start-line="43" selection-end-line="43" />
+              <caret line="43" selection-start-line="43" selection-end-line="43" />
             </state>
           </provider>
         </entry>
@@ -193,7 +209,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/GilterSimulator/Birds/BirdManager.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="592">
-              <caret line="52" column="24" lean-forward="true" selection-start-line="52" selection-start-column="24" selection-end-line="52" selection-end-column="24" />
+              <caret line="52" column="24" selection-start-line="52" selection-start-column="24" selection-end-line="52" selection-end-column="24" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -549,16 +565,15 @@
       <workItem from="1560925219574" duration="21023000" />
       <workItem from="1561130288918" duration="789000" />
       <workItem from="1561241941780" duration="199000" />
-      <workItem from="1561286362081" duration="10714000" />
+      <workItem from="1561286362081" duration="11316000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="121185000" />
+    <option name="totallyTimeSpent" value="121787000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15436241" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -879,7 +894,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/Engine/toolbox/Maths.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="367">
-          <caret line="31" column="79" lean-forward="true" selection-start-line="31" selection-start-column="79" selection-end-line="31" selection-end-column="79" />
+          <caret line="31" column="79" selection-start-line="31" selection-start-column="79" selection-end-line="31" selection-end-column="79" />
         </state>
       </provider>
     </entry>
@@ -914,20 +929,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Engine/Entitys/Plane.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="23" column="49" lean-forward="true" selection-start-line="23" selection-start-column="49" selection-end-line="23" selection-end-column="49" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/GilterSimulator/TerrainManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
-          <caret line="23" column="59" lean-forward="true" selection-start-line="23" selection-start-column="59" selection-end-line="23" selection-end-column="59" />
+          <caret line="23" column="59" selection-start-line="23" selection-start-column="59" selection-end-line="23" selection-end-column="59" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#451#452#0" expanded="true" />
@@ -939,7 +944,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/GilterSimulator/Birds/Bird.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="350">
-          <caret line="43" lean-forward="true" selection-start-line="43" selection-end-line="43" />
+          <caret line="43" selection-start-line="43" selection-end-line="43" />
         </state>
       </provider>
     </entry>
@@ -963,7 +968,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/GilterSimulator/Birds/BirdManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="592">
-          <caret line="52" column="24" lean-forward="true" selection-start-line="52" selection-start-column="24" selection-end-line="52" selection-end-column="24" />
+          <caret line="52" column="24" selection-start-line="52" selection-start-column="24" selection-end-line="52" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -973,7 +978,17 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/GilterSimulator/ObjectsManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="184">
-          <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
+          <caret line="30" selection-start-line="30" selection-end-line="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Engine/Entitys/Plane.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="23" column="49" selection-start-line="23" selection-start-column="49" selection-end-line="23" selection-end-column="49" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
