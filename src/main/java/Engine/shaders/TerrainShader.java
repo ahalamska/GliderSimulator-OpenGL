@@ -36,7 +36,7 @@ public class TerrainShader extends ShaderProgramImplementation {
         location_lightPosition = super.getUniformLocation("lightPosition");
         location_lightColour = super.getUniformLocation("lightColour");
         location_shineDamper = super.getUniformLocation("shineDamper");
-        location_reflectivity = super.getUniformLocation("reflectivity");
+        location_reflectivity = super.getUniformLocation("reflection");
 
     }
 
