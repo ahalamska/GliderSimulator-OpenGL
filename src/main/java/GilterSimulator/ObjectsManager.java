@@ -7,6 +7,7 @@ import Engine.models.RawModel;
 import Engine.renderEngine.MultipleRenderer;
 import Engine.renderEngine.OBJLoader;
 import Engine.renderEngine.VAOsLoader;
+import Engine.terrains.Terrain;
 import GilterSimulator.Birds.BirdManager;
 import org.lwjgl.util.vector.Vector3f;
 
@@ -24,8 +25,9 @@ public class ObjectsManager {
 
     public void createObjects() throws IOException {
         birdManager= new BirdManager();
-        birdManager.createEagles(500);
-        createTrees(20);
+        birdManager.createEagles(5000);
+        createTrees(200);
+
 
     }
 
@@ -48,9 +50,13 @@ public class ObjectsManager {
 
     private void createTree(ModelWithTexture modelWithTexture, float scale){
         Random random = new SecureRandom();
-        float x = random.nextFloat() * 800;
-        float z = random.nextFloat() * 800;
-        Vector3f position = new Vector3f(x,0.5f ,z);
+        Terrain terrain = TerrainManager.getInstance().getTerrains().get(
+                random.nextInt(TerrainManager.getInstance().getTerrains().size()-1));
+
+        float x = (random.nextInt((int) Terrain.SIZE) + terrain.getX());
+        float z = (random.nextInt((int) Terrain.SIZE) + terrain.getZ());
+        float y = terrain.getHeightOfTerrain(x,z);
+        Vector3f position = new Vector3f(x,y ,z);
 
         Entity entity = new Entity(modelWithTexture,position, 0, 0,
                 0, scale );

@@ -5,6 +5,8 @@ import Engine.models.ModelWithTexture;
 import Engine.renderEngine.DisplayManager;
 import Engine.renderEngine.OBJLoader;
 import Engine.renderEngine.VAOsLoader;
+import Engine.terrains.Terrain;
+import GilterSimulator.TerrainManager;
 import lombok.Getter;
 import lombok.Setter;
 import org.lwjgl.input.Keyboard;
@@ -16,7 +18,7 @@ import java.io.IOException;
 @Setter
 public class Plane extends Entity {
 
-    public static final int STARTING_ALTITUDE = 70;
+    public static final int STARTING_ALTITUDE = 100;
     //used
     private static final float MAX_ROLL = 20f;
     private static final float ROLL_SPEED = 0.5f;
@@ -35,6 +37,7 @@ public class Plane extends Entity {
     private float current_speed = 10f;
     private float current_turn_speed = 0;
     private float current_vertical_wind_speed = 0;
+
 
     public Plane() throws IOException {
 
@@ -55,10 +58,18 @@ public class Plane extends Entity {
         float dy =
                 (float) (GRAVITY_DROP_PER_SECOND + current_vertical_wind_speed + Math.sin(super.getRotX()) * PITCH_COEFF) * DisplayManager
                 .getFrameTimeSec();
-        if (getPosition().y + dy <= 0) dy = 0;
         super.increasePosition(dx, dy, dz);
-        isCollisionWithTheGround();
+        Terrain terrain = super.getCurrentTerrain(TerrainManager.getInstance().getTerrains());
+        if ((terrain == null)) {
+            System.out.println("Out of the Map");
+        }
+        assert terrain != null;
+        float terrainHeight = terrain.getHeightOfTerrain(super.getPosition().x , super.getPosition().z);
+        if(super.getPosition().y < terrainHeight){
+            super.getPosition().y = terrainHeight;
+        }
     }
+
 
     public void checkInputs() {
 
@@ -98,9 +109,4 @@ public class Plane extends Entity {
         }
     }
 
-    private Boolean isCollisionWithTheGround() {
-        if (super.getPosition().y < 0)              //not exactly, check line 29
-            System.out.println("Collision with groud!");
-        return super.getPosition().y < 0;
-    }
 }

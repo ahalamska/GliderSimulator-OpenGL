@@ -14,38 +14,36 @@ import org.lwjgl.opengl.Display;
 import org.lwjgl.util.vector.Vector3f;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainGameLoop {
 
     public static void main(String[] args) throws LWJGLException, IOException {
 
-        System.out.println(Sys.getTime()+"start");
+        System.out.println(Sys.getTime() + "start");
         DisplayManager.createDisplay();
-        System.out.println(Sys.getTime()+"created Display");
-        VAOsLoader loader = new VAOsLoader();
+        System.out.println(Sys.getTime() + "created Display");
         MultipleRenderer renderer = new MultipleRenderer();
 
-        System.out.println(Sys.getTime()+"renderen accesible");
+        System.out.println(Sys.getTime() + "renderen accesible");
+
+        Light sun = new Light(new Vector3f(1000, 2000, 1000), new Vector3f(1, 1, 1));
+
+        TextureModel terrainModel = new TextureModel(10, 0.05f, VAOsLoader.getInstance().loadTextureFromJPG("sand1"));
+        for (int i = -5; i <= 5; i++) {
+            for (int j = -5; j <= 5; j++) {
+                TerrainManager.getInstance().addTerrain(new Terrain(i, j, terrainModel, "heightMap"));
+            }}
+
+        System.out.println(Sys.getTime()+"Terrain crested");
 
         ObjectsManager objectsManager = new ObjectsManager();
         objectsManager.createObjects();
 
 
-        System.out.println(Sys.getTime()+"Plane created");
-
-        Light sun = new Light(new Vector3f(1000, 2000, 1000), new Vector3f(1, 1, 1));
-
-        TextureModel terrainModel = new TextureModel(10, 0.05f, loader.loadTextureFromJPG("sand1"));
-        List<Terrain> terrains = new ArrayList<>();
-        for(int i=-5; i <=5; i++)
-            for(int j=-5; j<=5; j++)
-                terrains.add(new Terrain(i, j, loader, terrainModel));
-
-        System.out.println(Sys.getTime()+"Terrain crested");
 
         Plane plane = new Plane();
+        System.out.println(Sys.getTime() + "Plane created");
+
         Camera camera = new Camera(plane);
 
         System.out.println(Sys.getTime()+"Camera created");
@@ -56,14 +54,12 @@ public class MainGameLoop {
             plane.move();
             objectsManager.processObjects(renderer);
             renderer.processEntity(plane);
-            for (Terrain t : terrains){
-                renderer.processTerrain(t);
-            }
+            TerrainManager.getInstance().processTerrains(renderer);
             renderer.render(sun, camera);
             DisplayManager.updateDisplay();
         }
         renderer.cleanUp();
-        loader.cleanUp();
+        VAOsLoader.getInstance().cleanUp();
         DisplayManager.closeDisplay();
     }
 }

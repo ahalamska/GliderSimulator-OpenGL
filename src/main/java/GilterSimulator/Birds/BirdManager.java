@@ -7,6 +7,8 @@ import Engine.models.RawModel;
 import Engine.renderEngine.MultipleRenderer;
 import Engine.renderEngine.OBJLoader;
 import Engine.renderEngine.VAOsLoader;
+import Engine.terrains.Terrain;
+import GilterSimulator.TerrainManager;
 import lombok.Getter;
 import org.lwjgl.util.vector.Vector3f;
 
@@ -32,21 +34,32 @@ public class BirdManager {
 
     private void createBird(ModelWithTexture birdModelWithTexture){
         Random random = new SecureRandom();
-        float x = random.nextFloat() * 1000 - 500;
-        float y = random.nextFloat() * 1000 - 500;
-        float z = random.nextFloat() * 1000 - 500;
-        Vector3f position = new Vector3f(x,y,z);
+        Terrain terrain = TerrainManager.getInstance().getTerrains().get(
+                random.nextInt(TerrainManager.getInstance().getTerrains().size() -1));
+
+        float x = (random.nextInt((int) Terrain.SIZE) + terrain.getX());
+        float z = (random.nextInt((int) Terrain.SIZE) + terrain.getZ());
+        float y = terrain.getHeightOfTerrain(x,z) + random.nextInt(1000);
+        Vector3f position = new Vector3f(x,y ,z);
          Bird newBird = new Bird(birdModelWithTexture, position, random.nextFloat() * 180f, random.nextFloat() * 180f,
                 random.nextFloat() * 180f, 0.2f);
         birds.add(newBird);
     }
 
 
-    public void countPosition(){
-        for( Bird bird: birds){
+    public void countPosition() {
+        List<Bird> toRemove = new ArrayList<>();
+        for (Bird bird : birds) {
             bird.move();
+            if (bird.isDead()) {
+                toRemove.add(bird);
+            }
+        }
+        for(Bird bird : toRemove){
+            birds.remove(bird);
         }
     }
+
     public void processBirds(MultipleRenderer renderer){
         for (Entity bird : birds) {
             renderer.processEntity(bird);

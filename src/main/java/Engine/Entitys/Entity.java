@@ -1,11 +1,14 @@
 package Engine.Entitys;
 
+import Engine.terrains.Terrain;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import Engine.models.ModelWithTexture;
 import org.lwjgl.util.vector.Vector3f;
+
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -39,5 +42,17 @@ public class Entity {
         this.scale += s;
     }
 
+
+    protected Terrain getCurrentTerrain(List<Terrain> terrains) {
+
+        for(Terrain terrain : terrains){
+            if(position.x >= terrain.getX() && (position.x <= terrain.getX() + Terrain.SIZE)){
+                if(position.z >= terrain.getZ() && (position.z <= terrain.getZ() + Terrain.SIZE)){
+                    return terrain;
+                }
+            }
+        }
+        return null;
+    }
 
 }

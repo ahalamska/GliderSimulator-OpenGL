@@ -39,12 +39,7 @@ public class TerrainShader extends ShaderProgramImplementation {
         location_lightColour = super.getUniformLocation("lightColour");
         location_shineDamper = super.getUniformLocation("shineDamper");
         location_reflectivity = super.getUniformLocation("reflection");
-<<<<<<< HEAD
-
-=======
-        location_skyColour = super.getUniformLocation("skyColour");
->>>>>>> cbe044d2fddd1e1bccf4460368d796a0991f5ea9
-    }
+        location_skyColour = super.getUniformLocation("skyColour"); }
 
     public void loadShineVariables(float damper,float reflectivity){
         super.loadFloat(location_shineDamper, damper);
