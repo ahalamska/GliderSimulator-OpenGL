@@ -25,7 +25,7 @@ public class ObjectsManager {
     public void createObjects() throws IOException {
         birdManager= new BirdManager();
         birdManager.createEagles(500);
-        createTrees(50);
+        createTrees(20);
 
     }
 
@@ -42,14 +42,14 @@ public class ObjectsManager {
 
         for (int i = 0; i < count ; i++) {
             createTree(modelWithTexture, 0.7f);
-            createTree(modelWithTexture2, 0.05f);
+            createTree(modelWithTexture2, 0.1f);
         }
     }
 
     private void createTree(ModelWithTexture modelWithTexture, float scale){
         Random random = new SecureRandom();
-        float x = random.nextFloat() * 10000 - 500;
-        float z = random.nextFloat() * 10000 - 5000;
+        float x = random.nextFloat() * 800;
+        float z = random.nextFloat() * 800;
         Vector3f position = new Vector3f(x,0.5f ,z);
 
         Entity entity = new Entity(modelWithTexture,position, 0, 0,

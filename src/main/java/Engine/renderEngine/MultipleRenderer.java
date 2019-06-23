@@ -20,9 +20,9 @@ public class MultipleRenderer {
     private static final float FOV = 70;
     private static final float NEAR_PLANE = 0.1F;
     private static final float FAR_PLANE = 1000;
-    private static final float RED = 1;
-    private static final float GREEN = 1;
-    private static final float BLUE = 1;
+    private static final float RED = 0.527f;
+    private static final float GREEN = 0.805f;
+    private static final float BLUE = 0.918f;
 
 
     private StaticShader shader = new StaticShader();
@@ -47,22 +47,23 @@ public class MultipleRenderer {
     }
 
     public void render(Light sun, Camera camera){
-    prepare();
-    shader.start();
-    shader.loadSkyColour(RED, GREEN, BLUE);
-    shader.loadLight(sun);
-    shader.loadViewMatrix(camera);
-    entityRenderer.render(entities);
-    shader.stop();
-    terrainShader.start();
-    terrainShader.loadLight(sun);
-    terrainShader.loadViewMatrix(camera);
-    terrainRenderer.render(terrains);
-    terrainShader.stop();
-    terrains.clear();
-    entities.clear();
+        prepare();
+        shader.start();
+        shader.loadSkyColour(RED, GREEN, BLUE);
+        shader.loadLight(sun);
+        shader.loadViewMatrix(camera);
+        entityRenderer.render(entities);
+        shader.stop();
+        terrainShader.start();
+        terrainShader.loadSkyColour(RED, GREEN, BLUE);
+        terrainShader.loadLight(sun);
+        terrainShader.loadViewMatrix(camera);
+        terrainRenderer.render(terrains);
+        terrainShader.stop();
+        terrains.clear();
+        entities.clear();
+    }
 
-}
     private void createProjectionMatrix(){
         float aspectRatio = (float) Display.getWidth() / (float) Display.getHeight();
         float y_scale = (float) ((1f / Math.tan(Math.toRadians(FOV / 2f))) * aspectRatio);
