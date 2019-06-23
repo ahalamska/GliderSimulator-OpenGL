@@ -2,33 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4023bef8-f0c3-4312-9526-73c822fe3ff1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/target/classes/Engine/Entitys/Camera.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Engine/Entitys/Entity.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Engine/Entitys/Light.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Engine/Entitys/Plane.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Engine/Textures/TextureModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Engine/models/ModelWithTexture.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Engine/models/RawModel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Engine/renderEngine/DisplayManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Engine/renderEngine/EntityRenderer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Engine/renderEngine/ModelLoader.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Engine/renderEngine/MultipleRenderer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Engine/renderEngine/OBJLoader.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Engine/renderEngine/TerrainRenderer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Engine/renderEngine/VAOsLoader.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Engine/shaders/ShaderProgram.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Engine/shaders/ShaderProgramImplementation.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Engine/shaders/StaticShader.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Engine/shaders/TerrainShader.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Engine/terrains/Terrain.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Engine/toolbox/Maths.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/GilterSimulator/Birds/Bird.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/GilterSimulator/Birds/BirdManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/GilterSimulator/MainGameLoop.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/GilterSimulator/ObjectsManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/GilterSimulator/TerrainManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -73,7 +47,7 @@
         <counts>
           <entry key="class" value="12" />
           <entry key="fragmentShader" value="1" />
-          <entry key="gitignore" value="1" />
+          <entry key="gitignore" value="2" />
           <entry key="glsl" value="22" />
           <entry key="java" value="131" />
           <entry key="png" value="1" />
@@ -85,7 +59,7 @@
         <counts>
           <entry key="CLASS" value="12" />
           <entry key="GLSL shader file" value="22" />
-          <entry key="Git file" value="1" />
+          <entry key="Git file" value="2" />
           <entry key="Image" value="1" />
           <entry key="JAVA" value="131" />
           <entry key="PLAIN_TEXT" value="3" />
@@ -97,6 +71,7 @@
           <entry key="class" value="1" />
           <entry key="dummy" value="52" />
           <entry key="fragmentShader" value="115" />
+          <entry key="gitignore" value="11" />
           <entry key="glsl" value="1382" />
           <entry key="java" value="13121" />
           <entry key="vertexShader" value="183" />
@@ -107,6 +82,7 @@
         <counts>
           <entry key="CLASS" value="1" />
           <entry key="GLSL shader file" value="1382" />
+          <entry key="Git file" value="11" />
           <entry key="JAVA" value="13121" />
           <entry key="PLAIN_TEXT" value="350" />
           <entry key="XML" value="1" />
@@ -138,15 +114,6 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Engine/toolbox/Maths.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="367">
-              <caret line="31" column="79" selection-start-line="31" selection-start-column="79" selection-end-line="31" selection-end-column="79" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/GilterSimulator/ObjectsManager.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="184">
@@ -154,6 +121,15 @@
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="20" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -257,7 +233,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/shaders/vertexShader" />
         <option value="$PROJECT_DIR$/src/main/java/Textures/ModelTexture.java" />
         <option value="$PROJECT_DIR$/src/main/java/models/TexturedModule.java" />
         <option value="$PROJECT_DIR$/src/main/java/models/TexturedModel.java" />
@@ -308,6 +283,7 @@
         <option value="$PROJECT_DIR$/src/main/java/Engine/Entitys/Entity.java" />
         <option value="$PROJECT_DIR$/src/main/java/GilterSimulator/Birds/BirdManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/GilterSimulator/ObjectsManager.java" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -364,6 +340,11 @@
               <item name="GliderSimulator" type="b2602c69:ProjectViewProjectNode" />
               <item name="GliderSimulator" type="462c0819:PsiDirectoryNode" />
               <item name=".idea" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GliderSimulator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GliderSimulator" type="462c0819:PsiDirectoryNode" />
+              <item name="objModels" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="GliderSimulator" type="b2602c69:ProjectViewProjectNode" />
@@ -565,24 +546,25 @@
       <workItem from="1560925219574" duration="21023000" />
       <workItem from="1561130288918" duration="789000" />
       <workItem from="1561241941780" duration="199000" />
-      <workItem from="1561286362081" duration="11316000" />
+      <workItem from="1561286362081" duration="11462000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="121787000" />
+    <option name="totallyTimeSpent" value="121933000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15436241" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15436241" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
       <window_info id="Favorites" order="4" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32844576" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.26686218" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.26686218" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4032258" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -652,13 +634,6 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/.idea/libraries/lib.xml">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/shaders/fragmentShader" />
     <entry file="file://$PROJECT_DIR$/src/main/java/shaders/vertexShader" />
@@ -975,6 +950,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Engine/Entitys/Plane.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="23" column="49" selection-start-line="23" selection-start-column="49" selection-end-line="23" selection-end-column="49" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/GilterSimulator/ObjectsManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="184">
@@ -985,13 +970,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Engine/Entitys/Plane.java">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="23" column="49" selection-start-line="23" selection-start-column="49" selection-end-line="23" selection-end-column="49" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="34">
+          <caret line="2" column="20" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
         </state>
       </provider>
     </entry>
