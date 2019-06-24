@@ -1,9 +1,9 @@
 package GilterSimulator.Birds;
 
-import Engine.Entitys.Entity;
-import Engine.models.ModelWithTexture;
-import Engine.renderEngine.DisplayManager;
-import Engine.terrains.Terrain;
+import engine.entitys.Entity;
+import engine.models.ModelWithTexture;
+import engine.renderEngine.DisplayManager;
+import engine.terrains.Terrain;
 import GilterSimulator.TerrainManager;
 import lombok.Getter;
 import org.lwjgl.util.vector.Vector3f;

@@ -1,7 +1,7 @@
 package GilterSimulator;
 
-import Engine.renderEngine.MultipleRenderer;
-import Engine.terrains.Terrain;
+import engine.renderEngine.MultipleRenderer;
+import engine.terrains.Terrain;
 import lombok.Getter;
 
 import java.util.ArrayList;

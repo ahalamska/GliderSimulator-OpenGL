@@ -1,14 +1,13 @@
 package GilterSimulator.Birds;
 
-import Engine.Entitys.Entity;
-import Engine.Textures.TextureModel;
-import Engine.models.ModelWithTexture;
-import Engine.models.RawModel;
-import Engine.renderEngine.MultipleRenderer;
-import Engine.renderEngine.OBJLoader;
-import Engine.renderEngine.VAOsLoader;
-import Engine.terrains.Terrain;
-import GilterSimulator.TerrainManager;
+import engine.entitys.Entity;
+import engine.entitys.PlayerPlane;
+import engine.Textures.TextureModel;
+import engine.models.ModelWithTexture;
+import engine.models.RawModel;
+import engine.renderEngine.MultipleRenderer;
+import engine.renderEngine.OBJLoader;
+import engine.renderEngine.VAOsLoader;
 import lombok.Getter;
 import org.lwjgl.util.vector.Vector3f;
 
@@ -25,7 +24,7 @@ public class BirdManager {
 
     public void createEagles(int count) throws IOException {
         RawModel birdModel = OBJLoader.loadObjModel("Eagle", VAOsLoader.getInstance());
-        TextureModel birdTexture = new TextureModel(10, 0.2f, VAOsLoader.getInstance().loadTextureFromPNG("Eagle"));
+        TextureModel birdTexture = new TextureModel(10, 0.2f, VAOsLoader.getInstance().loadTexture("Eagle", "PNG"));
         ModelWithTexture birdModelWithTexture = new ModelWithTexture(birdModel, birdTexture);
         for (int i = 0; i < count ; i++) {
             createBird(birdModelWithTexture);
@@ -34,15 +33,14 @@ public class BirdManager {
 
     private void createBird(ModelWithTexture birdModelWithTexture){
         Random random = new SecureRandom();
-        Terrain terrain = TerrainManager.getInstance().getTerrains().get(
-                random.nextInt(TerrainManager.getInstance().getTerrains().size() -1));
+        PlayerPlane.getInstance().getPosition();
 
-        float x = (random.nextInt((int) Terrain.SIZE) + terrain.getX());
-        float z = (random.nextInt((int) Terrain.SIZE) + terrain.getZ());
-        float y = terrain.getHeightOfTerrain(x,z) + random.nextInt(1000);
+        float x = (random.nextInt(3000) + PlayerPlane.getInstance().getPosition().x);
+        float z = (random.nextInt(3000) + PlayerPlane.getInstance().getPosition().z);
+        float y = (random.nextInt(100) + PlayerPlane.getInstance().getPosition().y);
         Vector3f position = new Vector3f(x,y ,z);
          Bird newBird = new Bird(birdModelWithTexture, position, random.nextFloat() * 180f, random.nextFloat() * 180f,
-                random.nextFloat() * 180f, 0.2f);
+                random.nextFloat() * 180f, 0.6f);
         birds.add(newBird);
     }
 
