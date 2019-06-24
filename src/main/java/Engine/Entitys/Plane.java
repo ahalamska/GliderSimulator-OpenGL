@@ -44,7 +44,7 @@ public class Plane extends Entity {
         super(new ModelWithTexture(OBJLoader.loadObjModel("plane",
                 VAOsLoader.getInstance()), new TextureModel(10, 2, VAOsLoader
                 .getInstance()
-                .loadTextureFromJPG("plane_textures"))), new Vector3f(0, Plane.STARTING_ALTITUDE, 0), 0, 0, 0, 0.3f);
+                .loadTexture("plane_textures", "JPG"))), new Vector3f(Terrain.SIZE/2, Plane.STARTING_ALTITUDE, Terrain.SIZE/2), 0, 0, 0, 0.3f);
     }
 
     public void move() {

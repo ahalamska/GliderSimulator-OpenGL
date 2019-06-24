@@ -19,10 +19,10 @@ import java.util.Map;
 public class MultipleRenderer {
     private static final float FOV = 70;
     private static final float NEAR_PLANE = 0.1F;
-    private static final float FAR_PLANE = 1000;
+    private static final float FAR_PLANE = SkyBoxRenderer.SIZE*1.8f;
     private static final float RED = 0.527f;
     private static final float GREEN = 0.805f;
-    private static final float BLUE = 0.918f;
+    private static final float BLUE = 0.718f;
 
 
     private StaticShader shader = new StaticShader();
@@ -36,6 +36,7 @@ public class MultipleRenderer {
     private Matrix4f projectionMatrix;
     private List<Terrain> terrains = new ArrayList<>();
 
+    private SkyBoxRenderer skyBoxRenderer;
 
     public MultipleRenderer(){
         GL11.glEnable(GL11.GL_CULL_FACE);
@@ -43,7 +44,7 @@ public class MultipleRenderer {
         createProjectionMatrix();
         entityRenderer = new EntityRenderer(shader, projectionMatrix);
         terrainRenderer = new TerrainRenderer(terrainShader, projectionMatrix);
-
+        skyBoxRenderer = new SkyBoxRenderer(VAOsLoader.getInstance(), projectionMatrix);
     }
 
     public void render(Light sun, Camera camera){
@@ -60,6 +61,7 @@ public class MultipleRenderer {
         terrainShader.loadViewMatrix(camera);
         terrainRenderer.render(terrains);
         terrainShader.stop();
+        skyBoxRenderer.render(camera);
         terrains.clear();
         entities.clear();
     }

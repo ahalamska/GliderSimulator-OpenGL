@@ -25,7 +25,7 @@ public class BirdManager {
 
     public void createEagles(int count) throws IOException {
         RawModel birdModel = OBJLoader.loadObjModel("Eagle", VAOsLoader.getInstance());
-        TextureModel birdTexture = new TextureModel(10, 0.2f, VAOsLoader.getInstance().loadTextureFromPNG("Eagle"));
+        TextureModel birdTexture = new TextureModel(10, 0.2f, VAOsLoader.getInstance().loadTexture("Eagle", "PNG"));
         ModelWithTexture birdModelWithTexture = new ModelWithTexture(birdModel, birdTexture);
         for (int i = 0; i < count ; i++) {
             createBird(birdModelWithTexture);

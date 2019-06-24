@@ -24,8 +24,8 @@ public class ObjectsManager {
 
 
     public void createObjects() throws IOException {
-        birdManager= new BirdManager();
-        birdManager.createEagles(5000);
+        //birdManager= new BirdManager();
+        //birdManager.createEagles(5000);
         createTrees(200);
 
 
@@ -35,11 +35,11 @@ public class ObjectsManager {
     public void createTrees(int count) throws IOException {
 
         RawModel model = OBJLoader.loadObjModel("grass", VAOsLoader.getInstance());
-        TextureModel textureModel = new TextureModel(10, 0.2f, VAOsLoader.getInstance().loadTextureFromJPG("trawa1"));
+        TextureModel textureModel = new TextureModel(10, 0.2f, VAOsLoader.getInstance().loadTexture("trawa1", "JPG"));
         ModelWithTexture modelWithTexture = new ModelWithTexture(model, textureModel);
 
         RawModel model2 = OBJLoader.loadObjModel("pien", VAOsLoader.getInstance());
-        TextureModel textureModel2 = new TextureModel(10, 0.2f, VAOsLoader.getInstance().loadTextureFromJPG("pien"));
+        TextureModel textureModel2 = new TextureModel(10, 0.2f, VAOsLoader.getInstance().loadTexture("pien", "JPG"));
         ModelWithTexture modelWithTexture2 = new ModelWithTexture(model2, textureModel2);
 
         for (int i = 0; i < count ; i++) {
@@ -64,8 +64,8 @@ public class ObjectsManager {
     }
 
     public void processObjects(MultipleRenderer renderer){
-        birdManager.countPosition();
-        birdManager.processBirds(renderer);
+        //birdManager.countPosition();
+        //birdManager.processBirds(renderer);
         for (Entity object : objects){
             renderer.processEntity(object);
         }

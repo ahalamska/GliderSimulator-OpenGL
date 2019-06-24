@@ -28,9 +28,9 @@ public class MainGameLoop {
 
         Light sun = new Light(new Vector3f(1000, 2000, 1000), new Vector3f(1, 1, 1));
 
-        TextureModel terrainModel = new TextureModel(10, 0.05f, VAOsLoader.getInstance().loadTextureFromJPG("sand1"));
-        for (int i = -5; i <= 5; i++) {
-            for (int j = -5; j <= 5; j++) {
+        TextureModel terrainModel = new TextureModel(10, 0.05f, VAOsLoader.getInstance().loadTexture("sand1", "JPG"));
+        for (int i = -3; i <= 3; i++) {
+            for (int j = -3; j <= 3; j++) {
                 TerrainManager.getInstance().addTerrain(new Terrain(i, j, terrainModel, "heightMap"));
             }}
 
