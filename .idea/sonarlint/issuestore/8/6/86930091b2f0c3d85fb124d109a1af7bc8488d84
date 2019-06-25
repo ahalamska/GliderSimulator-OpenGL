@@ -1,9 +1,0 @@
-
-Œsquid:S00116"hRename this field "location_transformationMatrix" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Â’¼ÿÿÿÿÿ8Ëšò·³-
-ˆsquid:S00116"dRename this field "location_projectionMatrix" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Êò¾¤úÿÿÿÿ8Ëšò·³-
-‚squid:S00116"^Rename this field "location_viewMatrix" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ğ—Éşÿÿÿÿÿ8Ëšò·³-
-~squid:S00116"_Rename this field "location_shineDamper" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÖÓ¹†8Ëšò·³-
-ƒsquid:S00116"_Rename this field "location_lightColour" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÃñÌñüÿÿÿÿ8Ëšò·³-
-…squid:S00116"aRename this field "location_lightPosition" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ûÆ–ÿÿÿÿÿ8Ëšò·³-
-„squid:S00116"`Rename this field "location_reflectivity" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ìŞâ¦üÿÿÿÿ8Ëšò·³-
-rsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(åÍï
