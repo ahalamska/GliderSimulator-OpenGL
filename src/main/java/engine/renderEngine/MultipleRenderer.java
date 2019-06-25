@@ -1,5 +1,6 @@
 package engine.renderEngine;
 
+import GilterSimulator.TextManager;
 import engine.entitys.Camera;
 import engine.entitys.Entity;
 import engine.entitys.Light;
@@ -7,10 +8,13 @@ import engine.models.ModelWithTexture;
 import engine.shaders.StaticShader;
 import engine.shaders.TerrainShader;
 import engine.terrains.Terrain;
+import engine.text.FontType;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.util.vector.Matrix4f;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

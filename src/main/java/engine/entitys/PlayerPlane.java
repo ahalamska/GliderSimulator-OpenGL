@@ -21,7 +21,7 @@ public class PlayerPlane extends Entity {
 
     private static PlayerPlane instance;
 
-    public static final int STARTING_ALTITUDE = 200;
+    public static final int STARTING_ALTITUDE = 1000;
     //used
     private static final float MAX_ROLL = 20f;
     private static final float ROLL_SPEED = 0.5f;
@@ -39,8 +39,11 @@ public class PlayerPlane extends Entity {
     private float currentSpeed = 10f;
     private float currentTurnSpeed = 0;
     private float currentVerticalWindSpeed = 0;
+    private boolean crashed = false;
+    private boolean flying = true;
     @Getter
     private Terrain currentTerrain;
+
 
 
     public static PlayerPlane getInstance(){
@@ -85,9 +88,9 @@ public class PlayerPlane extends Entity {
         assert currentTerrain != null;
         float terrainHeight = currentTerrain.getHeightOfTerrain(super.getPosition().x , super.getPosition().z);
         if(super.getPosition().y < terrainHeight){
+            flying = false;
+            crashed = true;
             super.getPosition().y = terrainHeight;
-            System.out.println("Collision with ground!!");          //TODO what to do when collision
-
         }
 
         if (!lastTerrain.equals(currentTerrain)){
@@ -134,5 +137,7 @@ public class PlayerPlane extends Entity {
         }
 
     }
+    public boolean isFlying() {return flying;}
 
+    public boolean isCrashed() {return crashed;}
 }

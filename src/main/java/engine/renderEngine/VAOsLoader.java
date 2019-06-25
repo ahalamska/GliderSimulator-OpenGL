@@ -48,11 +48,19 @@ public class VAOsLoader {
         return new RawModel(vaoID, positions.length/3);
     }
 
+    public int loadGUITextToVAO(float[] positions, float[] textureCoords) {
+        int vaoID = createVAO();
+        storeDataInAttributeList(0,2, positions);
+        storeDataInAttributeList(1,2, textureCoords);
+        unbindVAO();
+        return vaoID;
+    }
+
     public int loadTexture(String fileName, String format) throws IOException {
         Texture texture;
         texture = TextureLoader.getTexture(format, new FileInputStream("texture/"+fileName + "." + format.toLowerCase()));
         GL30.glGenerateMipmap(GL11.GL_TEXTURE_2D);
-        GL11.glTexParameterf(GL11.GL_TEXTURE_2D, GL14.GL_TEXTURE_LOD_BIAS, -0.4f);
+        GL11.glTexParameterf(GL11.GL_TEXTURE_2D, GL14.GL_TEXTURE_LOD_BIAS, 0f);
         textures.add(texture.getTextureID());
         return texture.getTextureID();
     }

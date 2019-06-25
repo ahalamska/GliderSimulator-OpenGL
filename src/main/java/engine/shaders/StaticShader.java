@@ -58,8 +58,8 @@ public class StaticShader extends ShaderProgramImplementation {
     }
 
     public void loadLight(Light light) {
-        super.loadVector(locationLightPosition, light.getPosition());
-        super.loadVector(locationLightColour, light.getColour());
+        super.load3DVector(locationLightPosition, light.getPosition());
+        super.load3DVector(locationLightColour, light.getColour());
     }
 
     public void loadShineVariables(float damper, float reflection) {
@@ -68,7 +68,7 @@ public class StaticShader extends ShaderProgramImplementation {
     }
 
     public void loadSkyColour(float r, float g, float b){
-        super.loadVector(locationSkyColour, new Vector3f(r,g,b));
+        super.load3DVector(locationSkyColour, new Vector3f(r,g,b));
     }
 }
 
