@@ -27,7 +27,7 @@ public class PlayerPlane extends Entity {
     private static final float ROLL_SPEED = 0.5f;
     private static final float MAX_TURN_SPEED = 20f;
     private static final float GRAVITY_DROP_PER_SECOND = -25.0f;
-    private static final float MAX_PITCH = 10f;
+    private static final float MAX_PITCH = 20f;
     private static final float PITCH_SPEED = 0.2f;
     private static final float PITCH_COEFF = 0.55f;
     //not used
@@ -36,9 +36,8 @@ public class PlayerPlane extends Entity {
     private static final float FAST_SUPPRESS = 4f;
     private static final float MAX_SPEED = 400f;
     //altitude of the lowest vertex of the model with initializing plane y on 0: lowest_y_coordinate*scale
-    private float currentSpeed = 10f;
+    private float currentSpeed = 50f;
     private float currentTurnSpeed = 0;
-    private float currentVerticalWindSpeed = 0;
     private boolean crashed = false;
     private boolean flying = true;
     @Getter
@@ -69,16 +68,19 @@ public class PlayerPlane extends Entity {
     public void move() throws IOException {
         checkInputs();
         super.increaseRotation(0, currentTurnSpeed * DisplayManager.getFrameTimeSec(), 0);
+        currentSpeed *= (1 - Math.sin(Math.toRadians(super.getRotX())));            //TODO tu trzeba sprawdzić jak działa
         float distance = currentSpeed * DisplayManager.getFrameTimeSec();
         float dx =
                 (float) (distance * Math.sin(Math.toRadians(super.getRotY()) * Math.cos(Math.toRadians(super.getRotX()))));
         float dz =
                 (float) (distance * Math.cos(Math.toRadians(super.getRotY()) * Math.cos(Math.toRadians(super.getRotX()))));
         float dy =
-                (float) (GRAVITY_DROP_PER_SECOND + currentVerticalWindSpeed + Math.sin(super.getRotX()) * PITCH_COEFF) * DisplayManager
+                (float) (GRAVITY_DROP_PER_SECOND + Math.sin(super.getRotX()) * PITCH_COEFF) * DisplayManager
                 .getFrameTimeSec();
         super.increasePosition(dx, dy, dz);
         PlayerPlane.getInstance().setPosition(getPosition());
+        crashed = PlayerPlane.getInstance().isCrashed();
+        flying = PlayerPlane.getInstance().isFlying();
         Terrain lastTerrain = currentTerrain;
         currentTerrain = super.getCurrentTerrain(TerrainManager.getInstance().getTerrains());
 
@@ -89,7 +91,9 @@ public class PlayerPlane extends Entity {
         float terrainHeight = currentTerrain.getHeightOfTerrain(super.getPosition().x , super.getPosition().z);
         if(super.getPosition().y < terrainHeight){
             flying = false;
-            crashed = true;
+            if(currentSpeed > 30f) {
+                crashed = true;
+            }
             super.getPosition().y = terrainHeight;
         }
 
@@ -127,12 +131,12 @@ public class PlayerPlane extends Entity {
         if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT)) {
             currentSpeed = Math.min(currentSpeed + 0.5f, MAX_SPEED);
         } else if (Keyboard.isKeyDown(Keyboard.KEY_SPACE)) {
-            currentSpeed = Math.max(-5, currentSpeed - 0.2f);       //chyba do zmiany, czy zostawiamy że można cofać
+            currentSpeed = Math.max(10f, currentSpeed - 0.2f);       //chyba do zmiany, czy zostawiamy że można cofać
         } else {
             if (currentSpeed > 0) {
-                currentSpeed = Math.max(0, currentSpeed - 0.1f);
+                currentSpeed = Math.max(10f, currentSpeed - 0.1f);
             } else {
-                currentSpeed = Math.min(0, currentSpeed + 0.1f);
+                currentSpeed = Math.min(10f, currentSpeed + 0.1f);
             }
         }
 

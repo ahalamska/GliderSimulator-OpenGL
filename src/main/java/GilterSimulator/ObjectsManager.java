@@ -83,8 +83,10 @@ public class ObjectsManager {
         for (Bird bird : birdManager.getBirds()) {
             if (Math.sqrt(Math.pow(bird.getPosition().x - PlayerPlane.getInstance().getPosition().x, 2) +
                     Math.pow(bird.getPosition().y - PlayerPlane.getInstance().getPosition().y, 2) +
-                    Math.pow(bird.getPosition().z - PlayerPlane.getInstance().getPosition().z, 2)) < collisionDelta)
-                        System.out.println("Collision with bird!!");            //TODO what to do when collision
+                    Math.pow(bird.getPosition().z - PlayerPlane.getInstance().getPosition().z, 2)) < collisionDelta) {
+                        PlayerPlane.getInstance().setFlying(false);
+                        PlayerPlane.getInstance().setCrashed(true);
+            }
         }
     }
 }

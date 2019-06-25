@@ -59,9 +59,9 @@ public class MainGameLoop {
                 plane.move();
             }
             lights.get(0).move(plane.getPosition().x, plane.getPosition().y, plane.getPosition().z);
-            ObjectsManager.getInstance().processObjects(renderer);
+            //ObjectsManager.getInstance().processObjects(renderer);
             renderer.processEntity(plane);
-            TerrainManager.getInstance().processTerrains(renderer);
+            //TerrainManager.getInstance().processTerrains(renderer);
             renderer.render(lights, camera);
             if(!plane.isFlying()) {
                 if (plane.isCrashed()) {
