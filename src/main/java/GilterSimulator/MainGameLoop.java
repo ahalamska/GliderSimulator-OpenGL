@@ -1,9 +1,9 @@
 package GilterSimulator;
 
+import engine.Textures.TextureModel;
 import engine.entitys.Camera;
 import engine.entitys.Light;
 import engine.entitys.PlayerPlane;
-import engine.Textures.TextureModel;
 import engine.renderEngine.DisplayManager;
 import engine.renderEngine.MultipleRenderer;
 import engine.renderEngine.VAOsLoader;
@@ -36,7 +36,6 @@ public class MainGameLoop {
         PlayerPlane plane = new PlayerPlane();
 
         Camera camera = new Camera(plane);
-
 
         while (!Display.isCloseRequested()) {
             camera.move();

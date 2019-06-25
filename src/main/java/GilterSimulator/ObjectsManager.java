@@ -1,15 +1,16 @@
 package GilterSimulator;
 
+import GilterSimulator.Birds.Bird;
+import GilterSimulator.Birds.BirdManager;
+import engine.Textures.TextureModel;
 import engine.entitys.Entity;
 import engine.entitys.PlayerPlane;
-import engine.Textures.TextureModel;
 import engine.models.ModelWithTexture;
 import engine.models.RawModel;
 import engine.renderEngine.MultipleRenderer;
 import engine.renderEngine.OBJLoader;
 import engine.renderEngine.VAOsLoader;
 import engine.terrains.Terrain;
-import GilterSimulator.Birds.BirdManager;
 import org.lwjgl.util.vector.Vector3f;
 
 import java.io.IOException;
@@ -35,8 +36,8 @@ public class ObjectsManager {
 
     public void createObjects() throws IOException {
         birdManager= new BirdManager();
-        birdManager.createEagles(100);
-        createTrees(20000);
+        birdManager.createEagles(1000);
+        //createTrees(1);
 
 
     }
@@ -79,8 +80,12 @@ public class ObjectsManager {
         for (Entity object : objects){
             renderer.processEntity(object);
         }
-
+        float collisionDelta = 2.0f;
+        for (Bird bird : birdManager.getBirds()) {
+            if (Math.sqrt(Math.pow(bird.getPosition().x - PlayerPlane.getInstance().getPosition().x, 2) +
+                    Math.pow(bird.getPosition().y - PlayerPlane.getInstance().getPosition().y, 2) +
+                    Math.pow(bird.getPosition().z - PlayerPlane.getInstance().getPosition().z, 2)) < collisionDelta)
+                        System.out.println("Collision with bird!!");            //TODO what to do when collision
+        }
     }
-
-
 }

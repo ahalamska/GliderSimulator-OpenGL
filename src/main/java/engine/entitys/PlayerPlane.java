@@ -1,13 +1,13 @@
 package engine.entitys;
 
+import GilterSimulator.ObjectsManager;
+import GilterSimulator.TerrainManager;
 import engine.Textures.TextureModel;
 import engine.models.ModelWithTexture;
 import engine.renderEngine.DisplayManager;
 import engine.renderEngine.OBJLoader;
 import engine.renderEngine.VAOsLoader;
 import engine.terrains.Terrain;
-import GilterSimulator.ObjectsManager;
-import GilterSimulator.TerrainManager;
 import lombok.Getter;
 import lombok.Setter;
 import org.lwjgl.input.Keyboard;
@@ -21,7 +21,7 @@ public class PlayerPlane extends Entity {
 
     private static PlayerPlane instance;
 
-    public static final int STARTING_ALTITUDE = 1200;
+    public static final int STARTING_ALTITUDE = 200;
     //used
     private static final float MAX_ROLL = 20f;
     private static final float ROLL_SPEED = 0.5f;
@@ -36,7 +36,6 @@ public class PlayerPlane extends Entity {
     private static final float FAST_SUPPRESS = 4f;
     private static final float MAX_SPEED = 400f;
     //altitude of the lowest vertex of the model with initializing plane y on 0: lowest_y_coordinate*scale
-    //TODO real-physic plane movement
     private float currentSpeed = 10f;
     private float currentTurnSpeed = 0;
     private float currentVerticalWindSpeed = 0;
@@ -76,6 +75,7 @@ public class PlayerPlane extends Entity {
                 (float) (GRAVITY_DROP_PER_SECOND + currentVerticalWindSpeed + Math.sin(super.getRotX()) * PITCH_COEFF) * DisplayManager
                 .getFrameTimeSec();
         super.increasePosition(dx, dy, dz);
+        PlayerPlane.getInstance().setPosition(getPosition());
         Terrain lastTerrain = currentTerrain;
         currentTerrain = super.getCurrentTerrain(TerrainManager.getInstance().getTerrains());
 
@@ -86,6 +86,7 @@ public class PlayerPlane extends Entity {
         float terrainHeight = currentTerrain.getHeightOfTerrain(super.getPosition().x , super.getPosition().z);
         if(super.getPosition().y < terrainHeight){
             super.getPosition().y = terrainHeight;
+            System.out.println("Collision with ground!!");          //TODO what to do when collision
 
         }
 
@@ -123,7 +124,7 @@ public class PlayerPlane extends Entity {
         if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT)) {
             currentSpeed = Math.min(currentSpeed + 0.5f, MAX_SPEED);
         } else if (Keyboard.isKeyDown(Keyboard.KEY_SPACE)) {
-            currentSpeed = Math.max(-5, currentSpeed - 0.2f);
+            currentSpeed = Math.max(-5, currentSpeed - 0.2f);       //chyba do zmiany, czy zostawiamy że można cofać
         } else {
             if (currentSpeed > 0) {
                 currentSpeed = Math.max(0, currentSpeed - 0.1f);
@@ -131,6 +132,7 @@ public class PlayerPlane extends Entity {
                 currentSpeed = Math.min(0, currentSpeed + 0.1f);
             }
         }
+
     }
 
 }

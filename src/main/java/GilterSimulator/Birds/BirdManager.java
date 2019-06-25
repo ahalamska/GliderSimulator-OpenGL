@@ -40,7 +40,7 @@ public class BirdManager {
         float y = (random.nextInt(100) + PlayerPlane.getInstance().getPosition().y);
         Vector3f position = new Vector3f(x,y ,z);
          Bird newBird = new Bird(birdModelWithTexture, position, random.nextFloat() * 180f, random.nextFloat() * 180f,
-                random.nextFloat() * 180f, 0.6f);
+                random.nextFloat() * 180f, 0.1f);
         birds.add(newBird);
     }
 
