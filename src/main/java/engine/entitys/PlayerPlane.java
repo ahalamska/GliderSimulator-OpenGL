@@ -21,12 +21,12 @@ public class PlayerPlane extends Entity {
 
     private static PlayerPlane instance;
 
-    public static final int STARTING_ALTITUDE = 200;
+    public static final int STARTING_ALTITUDE = 1800;
     //used
     private static final float MAX_ROLL = 20f;
     private static final float ROLL_SPEED = 0.5f;
     private static final float MAX_TURN_SPEED = 20f;
-    private static final float GRAVITY_DROP_PER_SECOND = 0.0f;
+    private static final float GRAVITY_DROP_PER_SECOND = -25.0f;
     private static final float MAX_PITCH = 10f;
     private static final float PITCH_SPEED = 0.2f;
     private static final float PITCH_COEFF = 0.55f;

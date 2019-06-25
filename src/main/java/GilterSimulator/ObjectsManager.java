@@ -36,10 +36,9 @@ public class ObjectsManager {
 
     public void createObjects() throws IOException {
         birdManager= new BirdManager();
-        birdManager.createEagles(1000);
-        //createTrees(1);
-
-
+        birdManager.createEagles(200);
+        birdManager.createPlanes(20);
+        createTrees(1000);
     }
 
 
@@ -64,8 +63,8 @@ public class ObjectsManager {
         Terrain terrain = TerrainManager.getInstance().getTerrains().get(
                 random.nextInt(TerrainManager.getInstance().getTerrains().size()-1));
 
-        float x = (random.nextInt(10000) + PlayerPlane.getInstance().getPosition().x);
-        float z = (random.nextInt(10000) + PlayerPlane.getInstance().getPosition().z);
+        float x = (random.nextInt(1000) + PlayerPlane.getInstance().getPosition().x);
+        float z = (random.nextInt(1000) + PlayerPlane.getInstance().getPosition().z);
         float y = terrain.getHeightOfTerrain(x,z);
         Vector3f position = new Vector3f(x,y ,z);
 

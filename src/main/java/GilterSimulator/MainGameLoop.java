@@ -13,6 +13,8 @@ import org.lwjgl.opengl.Display;
 import org.lwjgl.util.vector.Vector3f;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainGameLoop {
 
@@ -23,31 +25,40 @@ public class MainGameLoop {
 
         MultipleRenderer renderer = new MultipleRenderer();
 
-
-        Light sun = new Light(new Vector3f(1000, 2000, 1000), new Vector3f(1, 1, 1));
-
         TextureModel terrainModel = new TextureModel(10, 0.05f, VAOsLoader.getInstance().loadTexture("bottom1", "PNG"));
-        for (int i = -3; i <= 3; i++) {
-            for (int j = -3; j <= 3; j++) {
+        for (int i = -2; i <= 2; i++) {
+            for (int j = -2; j <= 2; j++) {
                 TerrainManager.getInstance().addTerrain(new Terrain(i, j, terrainModel, "heightMap1"));
             }
         }
 
         PlayerPlane plane = new PlayerPlane();
 
+        List<Light> lights = new ArrayList<>();
+        lights.add(new Light(new Vector3f(plane.getPosition().x , plane.getPosition().y, plane.getPosition().z + 3),
+                new Vector3f(0.3529f, 0.1529f, 0.2153f), new Vector3f(1, 0f, 0f)));
+        lights.add(new Light(new Vector3f(100000, 2000, 1000), new Vector3f(1,1,1)));
+
+        lights.add(new Light(new Vector3f(plane.getPosition().x, plane.getPosition().y,
+                PlayerPlane.getInstance().getCurrentTerrain().getHeightOfTerrain(plane.getPosition().x,
+                        plane.getPosition().y) + 3),
+                new Vector3f(0,1,0), new Vector3f(1, 0.02f, 0.001f)));
+
         Camera camera = new Camera(plane);
 
         while (!Display.isCloseRequested()) {
             camera.move();
             plane.move();
+            lights.get(0).move(plane.getPosition().x, plane.getPosition().y, plane.getPosition().z);
             ObjectsManager.getInstance().processObjects(renderer);
             renderer.processEntity(plane);
             TerrainManager.getInstance().processTerrains(renderer);
-            renderer.render(sun, camera);
+            renderer.render(lights, camera);
             DisplayManager.updateDisplay();
         }
         renderer.cleanUp();
         VAOsLoader.getInstance().cleanUp();
         DisplayManager.closeDisplay();
     }
+
 }
