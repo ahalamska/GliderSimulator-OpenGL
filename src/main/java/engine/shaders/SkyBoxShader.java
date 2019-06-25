@@ -30,7 +30,7 @@ public class SkyBoxShader extends ShaderProgramImplementation{
     }
 
     public void loadFogColour(float r, float g, float b){
-        super.loadVector(locationFogColour, new Vector3f(r,g,b));
+        super.load3DVector(locationFogColour, new Vector3f(r,g,b));
     }
 
     public void loadViewMatrix(Camera camera){

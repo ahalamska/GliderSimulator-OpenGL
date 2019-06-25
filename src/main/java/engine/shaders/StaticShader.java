@@ -71,14 +71,14 @@ public class StaticShader extends ShaderProgramImplementation {
     public void loadLights(List<Light> lights) {
         for (int i = 0; i<MAX_LIGHTS; i++) {
             if(i < lights.size()) {
-                super.loadVector(locationLightPosition[i], lights.get(i).getPosition());
-                super.loadVector(locationLightColour[i], lights.get(i).getColour());
-                super.loadVector(locationLightAttenuation[i], lights.get(i).getAttenuation());
+                super.load3DVector(locationLightPosition[i], lights.get(i).getPosition());
+                super.load3DVector(locationLightColour[i], lights.get(i).getColour());
+                super.load3DVector(locationLightAttenuation[i], lights.get(i).getAttenuation());
             }
             else {
-                super.loadVector(locationLightPosition[i], new Vector3f(0,0,0));
-                super.loadVector(locationLightColour[i], new Vector3f(0,0,0));
-                super.loadVector(locationLightAttenuation[i], new Vector3f(1,0,0));
+                super.load3DVector(locationLightPosition[i], new Vector3f(0,0,0));
+                super.load3DVector(locationLightColour[i], new Vector3f(0,0,0));
+                super.load3DVector(locationLightAttenuation[i], new Vector3f(1,0,0));
                 System.out.println(" ");
             }
         }
@@ -90,7 +90,7 @@ public class StaticShader extends ShaderProgramImplementation {
     }
 
     public void loadSkyColour(float r, float g, float b){
-        super.loadVector(locationSkyColour, new Vector3f(r,g,b));
+        super.load3DVector(locationSkyColour, new Vector3f(r,g,b));
     }
 }
 

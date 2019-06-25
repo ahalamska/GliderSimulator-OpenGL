@@ -5,6 +5,7 @@ import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL20;
 import org.lwjgl.util.vector.Matrix4f;
+import org.lwjgl.util.vector.Vector2f;
 import org.lwjgl.util.vector.Vector3f;
 
 import java.io.BufferedReader;
@@ -44,8 +45,12 @@ public abstract class ShaderProgramImplementation implements ShaderProgram {
         GL20.glUniform1f(location, value);
     }
 
-    public void loadVector(int location, Vector3f vector3f){
+    public void load3DVector(int location, Vector3f vector3f){
         GL20.glUniform3f(location, vector3f.x, vector3f.y, vector3f.z);
+    }
+
+    public void load2DVector(int location, Vector2f vector2f) {
+        GL20.glUniform2f(location, vector2f.x, vector2f.y);
     }
 
     public void loadBoolean(int location, boolean value){

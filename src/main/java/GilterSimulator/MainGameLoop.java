@@ -8,10 +8,14 @@ import engine.renderEngine.DisplayManager;
 import engine.renderEngine.MultipleRenderer;
 import engine.renderEngine.VAOsLoader;
 import engine.terrains.Terrain;
+import engine.text.FontType;
+import engine.text.GUIText;
 import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.Display;
+import org.lwjgl.util.vector.Vector2f;
 import org.lwjgl.util.vector.Vector3f;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +28,9 @@ public class MainGameLoop {
         DisplayManager.createDisplay();
 
         MultipleRenderer renderer = new MultipleRenderer();
+
+        TextManager.getInstance().init(VAOsLoader.getInstance());
+        FontType font = new FontType(VAOsLoader.getInstance().loadTexture("harrington", "PNG"), new File("./text/harrington.fnt"));
 
         TextureModel terrainModel = new TextureModel(10, 0.05f, VAOsLoader.getInstance().loadTexture("bottom1", "PNG"));
         for (int i = -2; i <= 2; i++) {
@@ -48,15 +55,28 @@ public class MainGameLoop {
 
         while (!Display.isCloseRequested()) {
             camera.move();
-            plane.move();
+            if(plane.isFlying()) {
+                plane.move();
+            }
             lights.get(0).move(plane.getPosition().x, plane.getPosition().y, plane.getPosition().z);
             ObjectsManager.getInstance().processObjects(renderer);
             renderer.processEntity(plane);
             TerrainManager.getInstance().processTerrains(renderer);
             renderer.render(lights, camera);
+            if(!plane.isFlying()) {
+                if (plane.isCrashed()) {
+                    GUIText text = new GUIText("YOU DIED", 10, font, new Vector2f(0, 0.25f), 1f, true);
+                    text.setColour(0.6f, 0, 0);
+                } else {
+                    GUIText text = new GUIText("YOU SUCCESFULLY LANDED", 5, font, new Vector2f(0, 0.3f), 1f, true);
+                    text.setColour(0.8f, 1f, 0.8f);
+                }
+            }
+            TextManager.getInstance().render();
             DisplayManager.updateDisplay();
         }
         renderer.cleanUp();
+        TextManager.getInstance().cleanUp();
         VAOsLoader.getInstance().cleanUp();
         DisplayManager.closeDisplay();
     }
