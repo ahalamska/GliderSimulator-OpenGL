@@ -21,22 +21,23 @@ public class PlayerPlane extends Entity {
 
     private static PlayerPlane instance;
 
-    public static final int STARTING_ALTITUDE = 1800;
+    public static final int STARTING_ALTITUDE = 2100;
     //used
     private static final float MAX_ROLL = 20f;
     private static final float ROLL_SPEED = 0.5f;
     private static final float MAX_TURN_SPEED = 20f;
     private static final float GRAVITY_DROP_PER_SECOND = -25.0f;
-    private static final float MAX_PITCH = 20f;
+    private static final float MAX_PITCH = 200f;
     private static final float PITCH_SPEED = 0.2f;
     private static final float PITCH_COEFF = 0.55f;
     //not used
     private static final float WIND_SUPPRESS = 0.9f;
     private static final float NORMAL_SUPPRESS = 2f;
     private static final float FAST_SUPPRESS = 4f;
-    private static final float MAX_SPEED = 400f;
+    private static final float MAX_SPEED = 200f;
     //altitude of the lowest vertex of the model with initializing plane y on 0: lowest_y_coordinate*scale
-    private float currentSpeed = 50f;
+    private float currentSpeed = 100f;
+    private float currentDownSpeed = 100f;
     private float currentTurnSpeed = 0;
     private boolean crashed = false;
     private boolean flying = true;
@@ -49,7 +50,8 @@ public class PlayerPlane extends Entity {
         if(instance == null){
             try {
                 instance = new PlayerPlane();
-            } catch (IOException e) {
+            }
+            catch (IOException e) {
                 e.printStackTrace();
             }
         }
@@ -68,14 +70,15 @@ public class PlayerPlane extends Entity {
     public void move() throws IOException {
         checkInputs();
         super.increaseRotation(0, currentTurnSpeed * DisplayManager.getFrameTimeSec(), 0);
-        currentSpeed *= (1 - Math.sin(Math.toRadians(super.getRotX())));            //TODO tu trzeba sprawdzić jak działa
+        currentSpeed = Math.min(MAX_SPEED, (float)
+                Math.max(currentSpeed * (1 + Math.sin(Math.toRadians(super.getRotX()))) , 10));
         float distance = currentSpeed * DisplayManager.getFrameTimeSec();
         float dx =
                 (float) (distance * Math.sin(Math.toRadians(super.getRotY()) * Math.cos(Math.toRadians(super.getRotX()))));
         float dz =
                 (float) (distance * Math.cos(Math.toRadians(super.getRotY()) * Math.cos(Math.toRadians(super.getRotX()))));
         float dy =
-                (float) (GRAVITY_DROP_PER_SECOND + Math.sin(super.getRotX()) * PITCH_COEFF) * DisplayManager
+                (float) (GRAVITY_DROP_PER_SECOND + Math.sin(super.getRotX())*10 * PITCH_COEFF) * DisplayManager
                 .getFrameTimeSec();
         super.increasePosition(dx, dy, dz);
         PlayerPlane.getInstance().setPosition(getPosition());
@@ -106,12 +109,13 @@ public class PlayerPlane extends Entity {
     public void checkInputs() {
 
         if (Keyboard.isKeyDown(Keyboard.KEY_W) || Keyboard.isKeyDown(Keyboard.KEY_UP)) {
-            super.setRotX(Math.min(super.getRotX() + PITCH_SPEED, MAX_PITCH));
+            super.setRotX(getRotX() + 3);
 
         } else if (Keyboard.isKeyDown(Keyboard.KEY_S) || Keyboard.isKeyDown(Keyboard.KEY_DOWN)) {
-            super.setRotX(Math.max(super.getRotX() - PITCH_SPEED, -MAX_PITCH));
+            super.setRotX(getRotX() - 3);
 
-        } else {
+        }
+        else {
             if (super.getRotX() > 0) super.setRotX(Math.max(super.getRotX() - PITCH_SPEED, 0));
             else super.setRotX(Math.min(super.getRotX() + PITCH_SPEED, 0));
         }
@@ -127,18 +131,6 @@ public class PlayerPlane extends Entity {
             else super.setRotZ(Math.min(super.getRotZ() + ROLL_SPEED, 0));
         }
         currentTurnSpeed = -MAX_TURN_SPEED * super.getRotZ() / MAX_ROLL;
-
-        if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT)) {
-            currentSpeed = Math.min(currentSpeed + 0.5f, MAX_SPEED);
-        } else if (Keyboard.isKeyDown(Keyboard.KEY_SPACE)) {
-            currentSpeed = Math.max(10f, currentSpeed - 0.2f);       //chyba do zmiany, czy zostawiamy że można cofać
-        } else {
-            if (currentSpeed > 0) {
-                currentSpeed = Math.max(10f, currentSpeed - 0.1f);
-            } else {
-                currentSpeed = Math.min(10f, currentSpeed + 0.1f);
-            }
-        }
 
     }
     public boolean isFlying() {return flying;}
